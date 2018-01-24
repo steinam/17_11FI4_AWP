@@ -1,0 +1,235 @@
+﻿using NUnit.Framework;
+
+namespace StackTest
+{
+	/// <summary>
+	/// TestKlasse für UnitTests
+	/// </summary>
+	[TestFixture]
+	public class Program
+	{
+		Stacker.Stacker stack;
+		
+		/// <summary>
+		/// Einsprungspunkt
+		/// </summary>
+		/// <summary>
+		/// dfd
+		/// </summary>
+        public static void Main()
+        {
+        	//Program me = new Program();
+        	//me.TestIsEmpty();
+        	//me.PushIsEmptyFalse();
+        }
+        
+        
+        /// <summary>
+        /// Durch die Init und das Setup-Attribute wird sichergestellt, 
+        /// dass jeder Test die gleichen Bedingungen vorfindet. 
+        /// </summary>
+        [SetUp]
+		public void Init()
+		{
+			  stack = new Stacker.Stacker();
+		}
+        
+        
+        /// <summary>
+        /// Test 1: Create a Stack and verify that IsEmpty is true
+        /// </summary>
+		[Test]
+		public void TestIsEmpty()
+		{
+			
+		}
+
+		/// <summary>
+		/// Test 2: Push a single object on the Stack and verify 
+		/// that IsEmpty is false.
+		/// </summary>
+		[Test]
+		public void PushOne()
+		{
+			
+		}
+		
+		/// <summary>
+		/// Test 3: Push a single object, 
+		/// Pop the object, and verify that IsEmpty is true.
+		/// </summary>
+		[Test]
+		public void Push()
+		{
+			
+
+
+		}
+		
+		
+		/// <summary>
+		/// 4 Push a single object, remembering what it is; Pop the object, 
+		/// and verify that the two objects are equal.
+		/// 
+		/// Pop-Methode muss entsprechend angepasst werden, dass Sie ein Objekt zurückgibt
+		/// 
+		/// </summary>
+		[Test]
+		public void PushPopContentCheck()
+		{
+			
+		}
+		
+		
+		/// <summary>
+		/// test 5:
+		/// Push three objects, remembering what they are; Pop each one, 
+  		/// and verify that they are removed in the correct order.
+		/// </summary>
+	 	[Test]
+		public void PushPopMultipleElements()
+		{
+			
+		}
+		
+		
+		
+		///
+		/// <summary>
+		/// Test 6: Pop a Stack that has no elements.
+		/// </summary>
+		[Test]
+	   [ExpectedException(typeof(InvalidOperationException))]
+	   public void PopEmptyStack()
+	   {
+	     
+	   }
+	   
+	 	/// <summary>
+	 	/// Test 7: Push a single object and then call Top. 
+	 	/// Verify that IsEmpty returns false.
+	 	/// </summary>
+	   [Test]
+	    public void PushTop()
+	    {
+	        
+	    }
+	    
+	    
+	    
+	    /// <summary>
+	    /// Test 8: Push a single object, remembering what it is;
+	    /// and then call Top. Verify that the object that is returned 
+	    /// is equal to the one that was pushed.
+	    /// </summary>
+	    [Test]
+	   	public void PushTopContentCheckOneElement()
+	   	{
+	    	
+	   	}
+	   	
+	   	/// <summary>
+	   	/// Test 9: Push multiple objects, remembering what they are; 
+	   	/// call Top, and verify that the last item pushed is equal to 
+	   	/// the one returned by Top.
+	   	/// </summary>
+	   	[Test]
+	    public void PushTopContentCheckMultiples()
+	    {
+	       
+
+
+	    }
+
+	    /// <summary>
+	    /// Test 10: Push one object and call Top repeatedly, 
+	    /// comparing what is returned to what was pushed.
+	    /// </summary>
+	    [Test]
+	    public void PushTopNoStackStateChange()
+	    {
+	       
+
+
+
+
+	    }
+	    
+	    /// <summary>
+	    /// Test 11: Call Top on a Stack that has no elements.
+	    /// 
+	    /// Consistency is a key component of designing a class library. 
+	    /// Because we chose to throw an InvalidOperationException when 
+	    /// we called Pop, we should be consistent and throw the same 
+	    /// exception when we call Top. Let’s write the test.
+	    /// </summary>
+	    [Test]
+   		[ExpectedException(typeof(InvalidOperationException))]
+	   	public void TopEmptyStack()
+	   	{
+	    	
+
+
+
+	   	}
+	   	
+	   	
+	   	/// <summary>
+	   	/// Test 12: Push null onto the Stack and verify 
+	   	/// that IsEmpty is false.
+	   	/// 
+		/// This is the first test that was added when we wrote 
+		/// the test that called Pop on an empty Stack. As you 
+		/// might recall, one of the options was to return a null 
+		/// to indicate that there were no elements in the Stack. 
+		/// If we had chosen that route, the programmer couldn’t have 
+		/// stored null on the Stack, so the interface would be less 
+		/// explicit. 
+		/// 
+		///This test pushes null onto the Stack and verifies that 
+		/// IsEmpty is false:
+	   	/// </summary>
+	   	[Test]
+    	public void PushNull()
+    	{
+        	
+
+
+
+    	} 
+    	
+    	
+    	/// <summary>
+    	/// Test 13: Push null onto the Stack, Pop the Stack, and 
+    	/// verify that the value returned is null.
+		/// The previous test verified that IsEmpty was correct after 
+		/// pushing null onto the Stack. In this test, we push a null 
+		/// object onto the Stack and then call Pop to retrieve the element 
+		/// and remove it from the Stack. The value returned from Pop should 
+		/// be equal to null.
+    	/// </summary>
+    	[Test]
+	    public void PushNullCheckPop()
+	    {
+	        
+	         
+	    }
+	    
+	    
+	    /// <summary>
+	    /// Test 14: Push null onto the Stack, call Top, and verify 
+	    /// that the value returned is null.
+		/// In this test, we push a null object onto the Stack and 
+		/// then call Top to retrieve the element from the Stack. 
+		/// The value returned from Top should be equal to null.
+	    /// </summary>
+	    [Test]
+	    public void PushNullCheckTop()
+	    {
+	       
+
+
+           
+	    }
+	}
+}

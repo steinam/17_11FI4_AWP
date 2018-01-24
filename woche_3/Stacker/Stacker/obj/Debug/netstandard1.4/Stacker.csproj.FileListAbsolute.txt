@@ -1,0 +1,8 @@
+C:\Users\steinam\Source\Repos\Stacker\Stacker\bin\Debug\netstandard1.4\Stacker.deps.json
+C:\Users\steinam\Source\Repos\Stacker\Stacker\bin\Debug\netstandard1.4\Stacker.dll
+C:\Users\steinam\Source\Repos\Stacker\Stacker\bin\Debug\netstandard1.4\Stacker.pdb
+C:\Users\steinam\Source\Repos\Stacker\Stacker\obj\Debug\netstandard1.4\Stacker.csprojResolveAssemblyReference.cache
+C:\Users\steinam\Source\Repos\Stacker\Stacker\obj\Debug\netstandard1.4\Stacker.csproj.CoreCompileInputs.cache
+C:\Users\steinam\Source\Repos\Stacker\Stacker\obj\Debug\netstandard1.4\Stacker.AssemblyInfo.cs
+C:\Users\steinam\Source\Repos\Stacker\Stacker\obj\Debug\netstandard1.4\Stacker.dll
+C:\Users\steinam\Source\Repos\Stacker\Stacker\obj\Debug\netstandard1.4\Stacker.pdb
