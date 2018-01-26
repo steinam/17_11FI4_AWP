@@ -1,0 +1,6 @@
+c:\schule\docbook\sj_2017\S3_11FI4_AWP\17_11FI4_AWP\woche_3\StartingPoint_2005_0\bin\Debug\StartingPoint.exe
+c:\schule\docbook\sj_2017\S3_11FI4_AWP\17_11FI4_AWP\woche_3\StartingPoint_2005_0\bin\Debug\StartingPoint.pdb
+c:\schule\docbook\sj_2017\S3_11FI4_AWP\17_11FI4_AWP\woche_3\StartingPoint_2005_0\obj\Debug\StartingPoint.csprojResolveAssemblyReference.cache
+c:\schule\docbook\sj_2017\S3_11FI4_AWP\17_11FI4_AWP\woche_3\StartingPoint_2005_0\obj\Debug\StartingPoint.csproj.CoreCompileInputs.cache
+c:\schule\docbook\sj_2017\S3_11FI4_AWP\17_11FI4_AWP\woche_3\StartingPoint_2005_0\obj\Debug\StartingPoint.exe
+c:\schule\docbook\sj_2017\S3_11FI4_AWP\17_11FI4_AWP\woche_3\StartingPoint_2005_0\obj\Debug\StartingPoint.pdb
