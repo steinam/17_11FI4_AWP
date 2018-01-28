@@ -1,0 +1,397 @@
+Vorgehensmodelle
+================
+
+
+Ein Vorgehensmodell ist ein für die Programmierung angepasstes Softwareentwicklungsmodell, welches dazu deint, den Prozess der Softwareentwicklung übersichtlicher zu gestalten und in der Komplexität beherrschbar zu machen.
+
+Es soll damit das "klassische" Coe and Fix-Vorgehen ersetzen, dessen Ansatz darin besteht, einfach ein Programm zu shcreiben und auftretende Fehler zu beheben. 
+
+.. figure:: figure/softwareentwicklung/vorgehensm_code_and_fix.png
+   :align: center
+   :alt: code_and_fix
+
+
+Durch die notwendige Fehlerbehebung wird das Programm evtl. so umstrukturiert, dass weitere Fehler und deren Behebungen notwendig werden. 
+
+In Vorgehensmodellen dagegen durchlebt Software verschiedene Phasen und  Stadien, die es dem Entwickler ermöglichen, die Komplexität von Software in strukturelle Teile zu zerlegen! 
+
+
+.. figure:: figure/softwareentwicklung/vorgehensmodell.png
+   :align: center
+   :alt: vorgehensmodell
+
+
+Wasserfallmodell
+~~~~~~~~~~~~~~~~
+
+Das Wasserfallmodell ist ein lineares Vorgehensmodell, das in Phasen organisiert wird. Dabei gehen 
+die Phasenergebnisse wie bei einem Wasserfall immer als bindende Vorgaben für die nächsttiefere 
+Phase ein. 
+
+
+.. figure:: figure/softwareentwicklung/wasserfall2.png
+   :align: center
+   :alt: Wasserfall
+
+
+.. only:: html
+
+      .. sidebar:: Anmerkung
+
+            :download:`Wasserfall_Royce <figure/softwareentwicklung/waterfall.pdf>`.
+
+            :download:`Video <figure/videos/2010_Real_Software_Engineering.mp4>`.
+
+            http://homepages.cs.ncl.ac.uk/brian.randell/NATO/
+       
+
+
+Das oben abgebildete Wasserfallmodell war in dieser Form von seinem Schöpfer nie gedacht. Durch die Einfachheit seines Ansatzes hat es sich aber leider in den Köpfen vieler Softwareentwickler festgesetzt. Der ursprüngliche Ansatz von Royce sah ein deutlich komplexeres Modell von Rückkopplungen vor.
+
+
+
+
+Eigenschaften Wasserfallmodell
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+**Charakteristika**
+
+-  Aktivitäten sind in der richtigen Reihenfolge und vollen Breite durchzuführen.
+-  Am Ende jeder AktivitÃ¤t steht ein Dokument (dokumentgetriebenes Modell)
+-  Entwicklungsablauf ist sequentiell, vorhergehende Aktivität muss beendet werden, bevor die nächste beginnt.
+-  Orientiert am Top-Down-Vorgehen
+-  Einfach, verständlich, wenig Managementaufwand
+-  Benutzerbeteiligung nur in der Definitionsphase
+
+
+**Vorteile**
+
+- Klarer und schlüssiger Aufbau in einzelne Abschnitte. 
+- Der Weg der Entwicklung ist weitestgehend vorgegeben. 
+- Meilensteine können zeitlich- und ergebnisorientiert kontrolliert werden. 
+
+
+**Nachteile**
+
+-  Notwendige Kurskorrekturen nicht frühzeitig erkennbar
+-  Sequentialität nicht immer nötig
+-  Gefahr, dass Dokumente wichtiger als das System werden
+-  Risikofaktoren werden u.U. zu wenig berücksichtigt
+
+
+
+
+
+V-Modell
+~~~~~~~~
+
+
+Das V-Modell fasst eine Reihe von ähnlich gelagerten Tätigkeiten zu einem sogenannten 
+Vorgehensbaustein zusammen. Insgesamt gibt es 22 dieser Vorgehensbausteine, wobei einige bei 
+allen Projekten Anwendung finden. Diese werden daher als V-Modell-Kern bezeichnet. 
+
+Charakteristiken:
+
+- Entwicklungsmodell für ein Gesamtsystem
+- Einheitlicher Standard im öffentlichen Anwendungsbereiches
+- ISO-Standard für Militär- und Bundesbehörden
+- Einheitliche Vorgaben für jedes einzelne Submodell
+
+
+Es wird in vier Sub-Modelle unterteilt, die dann an den tatsächlichen Bedarf angepasst werden.
+
+
+
+
+
+.. figure:: figure/softwareentwicklung/vmodell_core.png
+   :align: center
+   :alt: VModell
+
+
+
+Das V-Modell ist stark dokumentenorientiert. Es definiert eine Reihe von Dokumenten, die als Produkte bezeichnet werden. Diese setzen sich aus einzelnen Themen (Kapiteln) zusammen. Produkte, die einen starken inhaltlichen Zusammenhang haben, werden wiederum derselben Produktgruppe zugeordnet
+
+
+
+Das Submodell Softwareerstellung (SWE) basiert auf dem Wasserfallmodell. Eine Erweiterung 
+gegenüber dem Wasserfallmodell sind die zeitlich nachfolgenden Testphasen, die im rechten, nach 
+oben führenden Ast dargestellt werden. Den spezifizierenden Phasen stehen jeweils testende Phasen 
+gegenüber, was in der Darstellung ein charakteristisches `V` ergibt. 
+
+
+.. figure:: figure/softwareentwicklung/vmodell_swe.png
+   :align: center
+   :alt: Vorgehensmodell
+
+
+Fazit V-Modell
+^^^^^^^^^^^^^^
+
+Das V-Modell ist im SWE-Teil eine Erweiterung des Wasserfallmodells, welches **Qualitätssicherung** integriert.
+**Verifikation** und **Validation** der Software werden Bestandteile des Modells.
+
+Verifikation: 
+- "Are we building the product right?"
+- Überprüfung der Übereinstimmung zwischen Software-Produkt und seiner Spezifikation.
+
+Validation:
+- "Are we building the right product?"
+- Eignung bzw. Wert eines Produkts bezogen auf seinen Einsatzzweck.
+
+**Vorteile**
+
+-  Integrierte, detaillierte Beschreibung von Systemerstellung, Qualitätssicherung, Konfigurationsmanagement und Projektmanagement
+-  Generisches Vorgehensmodell
+-  Gut geeignet für große Projekte ???
+
+**Nachteile**
+
+-  Unkritische Übernahme der Konzepte, die für eingebettete Systeme entwickelt wurden, für andere Anwendungstypen
+-  Software-Bürokratie bei kleinen und mittleren Projekten
+-  Ohne CASE-Unterstützung nicht handhabbar
+
+   
+Prototypmodell
+~~~~~~~~~~~~~~
+
+Prototyping ist ein schnelles Verfahren zur Realisierung eines Beispielsystems, welches 
+schnell zu ersten Ergebnissen führt und frühzeitiges Feedback bezüglich der Eignung eines 
+Lösungsansatzes ermöglicht. 
+
+Es lößt damit einige klassische Probleme des Wasserfalmodells:
+
+-  Auftraggeber / Endbenutzer **können oft Anforderungen nicht vollständig / explizit formulieren**.
+   Dies ist aber in klassischen Definitionsphasen nötig!
+
+-  **Kooperation zwischen Anwendern und Entwicklern endet mit der
+   Definitionsphase:** Entwicklungsabteilungen ziehen sich nach
+   Definitionsphase zurück und präsentieren erst nach Fertigstellung das
+   Ergebnis; wünschenswerte Koordination zum Lernen von den jeweils
+   anderen unterbleibt
+
+-  Oft existieren **unterschiedliche Lösungswege**, die besser experimentell
+   erprobt werden und mit dem Auftraggeber diskutiert werden können.
+
+-  Manche Anforderungen lassen sich theoretisch nicht garantieren (z.B.
+   Echtzeitanforderungen). Vor dem Abschluss der Definitionsphase muss
+   also ggf. einiges ausprobiert werden.
+
+-  Das Überzeugen des Auftraggebers von der **prinzipiellen
+   Durchführbarkeit** oder Handhabung einer Idee während der
+   Akquisitionsphase wird nicht unterstützt (Folge für
+   Verantwortungsteilung, Mittelfluss, etc).
+
+
+
+.. figure:: figure/softwareentwicklung/prototype_idee.png
+   :align: center
+   :alt: Idee
+
+   
+Vorteil:
+
+- Das Prototypmodell kann sinnvoll in andere Prozessmodelle integriert werden. 
+- Verbessert die Planung und Verifikation von Softwaresystemen. 
+- Auftraggeber wird stärker an der Entwicklung beteiligt. 
+- Anforderungen der Anwender können laufend präzisiert werden. 
+- Kreative Alternativlösungen möglich. 
+- Reduziert das Entwicklungsrisiko. 
+- Fehlerhafte Wechselwirkungen der Komponenten werden früher erkannt. 
+
+
+Nachteil:
+
+- Erfordern höheren Entwicklungsaufwand, wenn Sie zusätzlich erstellt werden. 
+- "Wegwerf-Prototypen" werden aus Zeitgründen doch im Zielprodukt integriert. 
+- Werden oft als "Ersatz" für eine fehlende Dokumentation betrachtet. 
+   
+
+
+Arten von Prototypen
+^^^^^^^^^^^^^^^^^^^^
+
+-  Demonstrationsprototyp:
+
+   Dient zur Auftragsakquisition; verschafft Eindruck, wie das Produkt
+   aussehen kann. Wichtig: Wird spÃ¤ter weggeworfen!
+
+-  Prototyp im engeren Sinne:
+
+   Wird parallel zur Modellierung des Anwendungsbereiches erstellt, um
+   Aspekte der Benutzungsschnittstelle oder Teile der FunktionalitÃ¤t zu
+   veranschaulichen. Dient zur Analyse. (Exploratives Prototyping)
+
+-  Labormuster:
+
+   Dient zur Beantwortung konstruktionsbezogener Fragen und
+   Alternativen.
+
+-  Pilotsystem:
+
+   Dient nicht nur zur experimentelle Erprobung oder Veranschaulichung,
+   sondern ist schon Kern des Produkts. Unterscheidung zwischen Prototyp
+   und Produkt verschwindet spÃ¤ter. Die Weiterentwicklung erfolgt in
+   Zyklen unter Beteiligung der Benutzer. Es ist ein wesentlich
+   sorgfältigerer Entwurf nötig, da der Prototyp spÃ¤ter weiterbenutzt
+   wird! Benutzerdokumentation wird ebenfalls nötig. (Evolutionäres
+   Prototyping)
+
+-  Horzontale und vertikale Prototypen
+
+.. image:: figure/softwareentwicklung/proto_hor_vert.png
+   
+
+.. image:: figure/softwareentwicklung/prototype_example.png
+
+
+.. raw:: latex
+
+      \newpage
+           
+
+Spiralmodell
+~~~~~~~~~~~~
+
+Das Spiralmodell ist eigentlich ein Modell höherer Ordnung, da es andere Modelle integriert.
+Das Spiralmodell besteht aus vier Quadranten, die während der Systementwicklung für 
+jede Verfeinerungsebene jeweils einmal nacheinander durchlaufen werden. Das 
+mehrfache Durchlaufen wird als Spirale dargestellt. Die Fläche der Spirale beschreibt die 
+summierten Kosten der aktuellen Entwicklung. 
+
+
+.. figure:: figure/softwareentwicklung/Spiralmodell.png
+   :align: center
+   :alt: Spiralmodell
+
+
+-  Schritt 1:
+
+   -  Identifizierung der Ziele des Teilprodukts (Leistung,
+      Funktionalität, Anpassbarkeit, ...)
+   -  Alternative Möglichkeiten zur Realisierung des Teilprodukts
+      finden.
+   -  Randbedingungen bei verschiedenen Alternativen finden
+
+-  Schritt 2:
+
+   -  Evaluierung der Alternativen unter Berücksichtigung aller
+      Alternativen
+   -  Identifizieren und ggf. Ãœberwinden von Risiken (durch Prototypen,
+      Simulation, ...)
+
+-  Schritt 3:
+
+   -  Abhängig vom Risiko wird ein Prozessmodell festgelegt (oder eine
+      Kombination).
+   -  Anwendung des Modells
+
+-  Schritt 4:
+
+   -  Planung des nächsten Zyklus, Überprüfung der nächsten 3 Schritte
+      im nächsten Zyklus, Einverständnis mit Beteiligten sichern.
+
+      
+Bewertung
+^^^^^^^^^
+
+Eigenschaften
+
+-  Risikogetriebenes Modell, da Hauptziel die Minimierung des Risikos
+   ist.
+
+-  Ziel: Beginne im Kleinen, halte die Spirale so eng wie möglich und
+   erreiche das Ziel mit minimalen Kosten.
+
+**Vorteile**
+
+-  Periodische Überprüfung und ggf. Neufestlegung des Prozessmodells
+
+-  Prozessmodell ist nicht für die gesamte Dauer des Projekts festgelegt.
+
+-  Flexibel, leichtere Umsteuerung
+
+-  Erleichtert Wiederverwendung von Software durch Betrachtung von
+   Alternativen.
+
+Nachteile
+
+-  Hoher Managementaufwand
+
+-  Für kleine und mittlere Projekte weniger gut geeignet.
+
+-  Wissen über Identifizierung und Management von Risiken ist noch nicht
+   sehr verbreitet.
+
+   
+
+XP (Xtreme Programming)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Extreme Programming (XP; auch Extremprogrammierung) ist eine Methode, die das Lösen einer Programmieraufgabe in den Vordergrund der Softwareentwicklung stellt und dabei einem formalisierten Vorgehen geringere Bedeutung zumisst. Diese Vorgehensweise definiert ein Vorgehensmodell der Softwaretechnik, das sich den Anforderungen des Kunden in kleinen Schritten annähert. Die Wirksamkeit des Ansatzes ist umstritten (siehe Abschnitt Kritik). 
+
+
+
+.. figure:: figure/softwareentwicklung/ xp_zyklus.png
+   :align: center
+   :alt: 
+
+
+Die Darstellung der zu erfüllenden Funktionalitäten wird durch sog. **User Stories** abgebildet. Hier definiert man eine zu erfüllende Anforderung des Produkts aus der Anwendersicht heraus. Die Userstory führt dann zu konkreten Aufgaben (**Tasks**), die wiederum Teil eines **Iteration**slaufes sind. Die Aufwandsschätzung wird vom Programmierteam durch sog. **StoryPoints** definiert, die einer UserStory zugeordnet werden.
+
+
+
+
+.. figure:: figure/softwareentwicklung/xp_iteration.png
+   :align: center
+   :alt:
+
+
+.. figure:: figure/softwareentwicklung/xp_story_point.png
+   :align: center
+   :alt:
+
+
+XP sieht eine Reihe von Konzepten vor, die sich in Begriffen manifestieren und eine Abgrenzung zu anderen Vorgehensmodellen darstellen.
+
+.. figure:: figure/softwareentwicklung/xp_concepts.png
+   :align: center
+   :alt:
+
+
+.. figure:: figure/softwareentwicklung/xp_loop.png
+   :align: center
+   :alt:
+
+
+
+
+XP ist eine Implementierung des sog Agilen Manifests (www.agilemanifesto.org). In diesem Manifest formulierten anfangs einige Entwickler ihr Grundverständnis, wie moderne Softwarentwicklung aussehen sollte und konkretisierten später diese durch wegweisende Konzepte wie z.B. das Prinzip von UnitTesting, PairProgramming, Continuous Integration. 
+
+Sie grenzen sich damit von den herkömmlichen Vorgehensmodellen ab
+
+
+.. figure:: figure/softwareentwicklung/xp_gedanken.png
+   :align: center
+   :alt:
+
+
+Ziel:  
+
+Schnellere Bereitstellung der Software als bei herkömmlichen Methoden 
+Höhere Softwarequalität
+
+
+
+
+
+
+
+Scrumm
+~~~~~~
+
+Scrum übernahm viele Konzepte von XP und entwicklete zusätzlich eigene Ansätze
+
+Siehe eigenes Dokument ...

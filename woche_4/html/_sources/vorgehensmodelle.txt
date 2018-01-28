@@ -1,0 +1,323 @@
+Vorgehensmodelle
+==================
+
+
+-  Wasserfallmodell
+-  Prototypmodell
+-  V-Modell
+-  Extreme Programming, Agile Development
+-  CMM - Capability and Maturity Model
+
+Code And Fix
+~~~~~~~~~~~~
+
+.. figure:: figure/softwareentwicklung/vorgehensm_code_and_fix.png
+   :align: center
+   :alt: 
+
+Eigenschaften Code And Fix
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+-  Schreibe ein Programm
+-  Finde und behebe die Fehler im Programm
+
+Nachteile
+
+-  Fehlerbehebung strukturiert Programm so um, dass weitere
+   Fehlerbehebungen und die Weiterentwicklung immer teurer werden. Eine
+   **Entwurfsphase** wird notwendig.
+-  Selbst gut entworfene Software wird wird von den Benutzern oft nicht
+   akzeptiert. Eine **Definitionsphase** vor dem Entwurf wird nÃ¶tig.
+-  Fehler sind schwer zu finden, da Tests schlecht vorbereitet und
+   Ã„nderungen unzureichend durchgefÃ¼hrt wurden. Eine separate
+   **Testphase** wird nÃ¶tig.
+
+Wasserfallmodell
+~~~~~~~~~~~~~~~~
+
+.. figure:: figure/softwareentwicklung/wasserfall_modell.png
+   :align: center
+   :alt: 
+
+Eigenschaften Wasserfallmodell
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+-  Weiterentwicklung des stufenorientierten Modells
+-  Sukzessive Stufen der Entwicklung mit RÃ¼ckkopplung
+
+Charakteristika
+
+-  AktivitÃ¤ten sind in der richtigen Reihenfolge und vollen Breite
+   durchzufÃ¼hren.
+-  Am Ende jeder AktivitÃ¤t steht ein Dokument (dokumentgetriebenes
+   Modell)
+-  Entwicklungsablauf ist sequentiell, vorhergehende AktivitÃ¤t muÃŸ
+   beendet werden, bevor die nÃ¤chste beginnt.
+-  Orientiert am Top-down-Vorgehen
+-  Einfach, verstÃ¤ndlich, wenig Managementaufwand
+-  Benutzerbeteiligung nur in der Definitionsphase
+
+Nachteile
+
+-  Notwendige â€žKurskorrekturenâ€œ nicht frÃ¼hzeitig erkennbar
+-  SequentialitÃ¤t nicht immer nÃ¶tig
+-  Gefahr, daÃŸ Dokumente wichtiger als das System werden
+-  Risikofaktoren werden u.U. zu wenig berÃ¼cksichtigt
+
+V-Modell
+~~~~~~~~~~~~~~~~
+
+.. figure:: figure/softwareentwicklung/V_Modell.png
+   :align: center
+   :alt: 
+
+Eigenschaften V-Modell
+^^^^^^^^^^^^^^^^^^^^^^
+
+Erweiterung des Wasserfallmodells, das **QualitÃ¤tssicherung**
+integriert.
+
+**Verifikation** und **Validation** werden Bestandteile des Modells.
+
+.. figure:: images/note.png
+   :align: center
+   :alt: [Anmerkung]
+
+   [Anmerkung]
+   Verifikation
+
+   "Are we building the product right?"
+
+   Überprüfung der Übereinstimmung zwischen Software-Produkt und seiner Spezifikation.
+
+   .. figure:: images/note.png
+   	  :align: center
+   	  :alt: [Anmerkung]
+
+   [Anmerkung]
+   Validation
+
+   "Are we building the right product?"
+
+   Eignung bzw. Wert eines Produkts bezogen auf seinen Einsatzzweck.
+
+   **Vorteile**
+
+   -  Integrierte, detaillierte Beschreibung von Systemerstellung, Qualitätssicherung, Konfigurationsmanagement und Projektmanagement
+   -  Generisches Vorgehensmodell
+   -  Gut geeignet für große Projekte
+
+   **Nachteile**
+
+   -  Unkritische Ãœbernahme der Konzepte, die für eingebettete Systeme
+   entwickelt wurden, für andere Anwendungstypen
+   -  Software-Bürokratie bei kleinen und mittleren Projekten
+   -  Ohne CASE-Unterstützung nicht handhabbar
+
+   
+Prototypmodell
+~~~~~~~~~~~~~~
+
+-  Auftraggeber / Endbenutzer können oft Anforderungen nicht vollständig / explizit formulieren.
+   Dies ist aber in klassischen Definitionsphasen nötig!
+
+-  Kooperation zwischen Anwendern und Entwicklern endet mit der
+   Definitionsphase: Entwicklungsabteilungen ziehen sich nach
+   Definitionsphase zurÃ¼ck und präsentieren erst nach Fertigstellung das
+   Ergebnis; wünschenswerte Koordination zum Lernen von den jeweils
+   anderen unterbleibt
+
+-  Oft existieren unterschiedliche Lösungswege, die besser experimentell
+   erprobt werden und mit dem Auftraggeber diskutiert werden können.
+
+-  Manche Anforderungen lassen sich theoretisch nicht garantieren (z.B.
+   Echtzeitanforderungen). Vor dem Abschluss der Definitionsphase muss
+   also ggf. einiges ausprobiert werden.
+
+-  Das Überzeugen des Auftraggebers von der prinzipiellen
+   Durchführbarkeit oder Handhabung einer Idee während der
+   Akquisitionsphase wird nicht unterstützt (Folge für
+   Verantwortungsteilung, Mittelfluss, etc).
+
+-  
+
+.. figure:: figure/softwareentwicklung/prototyp_modell.png
+   :align: center
+   :alt: 
+
+   
+Eigenschaften
+^^^^^^^^^^^^^
+
+Ein Software-Prototyp
+
+-  ... ist nicht das erste Muster einer großen Serie (beliebig
+   kopierbar, Massenfertigung)
+
+-  ... ist keine Simulation, sondern zeigt ausgewÃ¤hlte Eigenschaften des
+   Zielprodukts im praktischen Einsatz (vgl. z.B. Windkanal oder
+   Architekturmodell)
+
+-  ... dient zum KlÃ¤ren von relevanten Anforderungen oder
+   Entwicklungsproblemen.
+
+-  ... dient als Diskussionsbasis für Entscheidungen.
+
+-  ... dient zu experimentellen Zwecken und Sammeln von praktischen
+   Erfahrungen.
+
+   
+Arten von Prototypen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+-  Demonstrationsprototyp
+
+   Dient zur Auftragsakquisition; verschafft Eindruck, wie das Produkt
+   aussehen kann. Wichtig: Wird spÃ¤ter weggeworfen!
+
+-  Prototyp im engeren Sinne:
+
+   Wird parallel zur Modellierung des Anwendungsbereiches erstellt, um
+   Aspekte der Benutzungsschnittstelle oder Teile der FunktionalitÃ¤t zu
+   veranschaulichen. Dient zur Analyse. (Exploratives Prototyping)
+
+-  Labormuster:
+
+   Dient zur Beantwortung konstruktionsbezogener Fragen und
+   Alternativen.
+
+-  Pilotsystem:
+
+   Dient nicht nur zur experimentelle Erprobung oder Veranschaulichung,
+   sondern ist schon Kern des Produkts. Unterscheidung zwischen Prototyp
+   und Produkt verschwindet spÃ¤ter. Die Weiterentwicklung erfolgt in
+   Zyklen unter Beteiligung der Benutzer. Es ist ein wesentlich
+   sorgfÃ¤ltigerer Entwurf nÃ¶tig, da der Prototyp spÃ¤ter weiterbenutzt
+   wird! Benutzerdokumentation wird ebenfalls nÃ¶tig. (EvolutionÃ¤res
+   Prototyping)
+
+-  Horzontale und vertikale Prototypen
+
+   .. figure:: figure/softwareentwicklung/prototyp_modell_vert_horiz.png
+      :align: center
+      :alt: 
+
+      
+Bewertung
+^^^^^^^^^^^^^^^^^^^
+
+Vorteile
+
+-  Reduktion des Entwicklungsrisikos durch frÃ¼hzeitige/stÃ¤rkere
+   RÃ¼ckkopplung.
+
+-  Sinnvoll in andere ProzeÃŸmodelle integrierbar.
+
+-  Prototypen sind durch geeignete Werkzeuge schnell erstellbar. ("Rapid
+   Prototyping")
+
+Nachteile
+
+-  HÃ¶herer Entwicklungsaufwand.
+
+-  Gefahr, daÃŸ ein â€žWegwerfâ€œ-Prototyp nicht weggeworfen wird.
+
+-  Prototypen werden oft als Ersatz fÃ¼r Dokumentation angesehen.
+
+
+Spiralmodell
+~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: figure/softwareentwicklung/Spiralmodell.png
+   :align: center
+   :alt: 
+
+-  Das Spiralmodell ist eigentlich ein Modell hÃ¶herer Ordnung
+-  FÃ¼r jedes (Teil-)Produkt sind zyklisch vier Schritte zu durchlaufen:
+-  Schritt 1:
+
+   -  Identifizierung der Ziele des Teilprodukts (Leistung,
+      FunktionalitÃ¤t, AnpaÃŸbarkeit, ...)
+   -  Alternative MÃ¶glichkeiten zur Realisierung des Teilprodukts
+      finden.
+   -  Randbedingungen bei verschiedenen Alternativen finden
+
+-  Schritt 2:
+
+   -  Evaluierung der Alternativen unter BerÃ¼cksichtigung aller
+      Alternativen
+   -  Identifizieren und ggf. Ãœberwinden von Risiken (durch Prototypen,
+      Simulation, ...)
+
+-  Schritt 3:
+
+   -  AbhÃ¤ngig vom Risiko wird ein ProzeÃŸmodell festgelegt (oder eine
+      Kombination).
+   -  Anwendung des Modells
+
+-  Schritt 4:
+
+   -  Planung des nÃ¤chsten Zyklus, ÃœberprÃ¼fung der nÃ¤chsten 3 Schritte
+      im nÃ¤chsten Zyklus, EinverstÃ¤ndnis mit Beteiligten sichern.
+
+      
+Bewertung
+^^^^^^^^^^^^^^^^^^^
+
+Eigenschaften
+
+-  Risikogetriebenes Modell, da Hauptziel die Minimierung des Risikos
+   ist.
+
+-  Ziel: Beginne im Kleinen, halte die Spirale so eng wie mÃ¶glich und
+   erreiche das Ziel mit minimalen Kosten.
+
+Vorteile
+
+-  Periodische ÃœberprÃ¼fung und ggf. Neufestlegung des ProzeÃŸmodells
+
+-  ProzeÃŸmodell ist nicht fÃ¼r die gesamte Dauer des Projekts festgelegt.
+
+-  Flexibel, leichtere Umsteuerung
+
+-  Erleichtert Wiederverwendung von Software durch Betrachtung von
+   Alternativen.
+
+Nachteile
+
+-  Hoher Managementaufwand
+
+-  FÃ¼r kleine und mittlere Projekte weniger gut geeignet.
+
+-  Wissen Ã¼ber Identifizierung und Management von Risiken ist noch nicht
+   sehr verbreitet.
+
+   
+Unified Process
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: figure/softwareentwicklung/unified_process_1.png
+   :align: center
+   :alt: 
+
+-  Der Einstieg etabliert das GeschÃ¤ftsziel und legt den Umfang des
+   Projektes fest.
+
+-  In der Erarbeitungsphase werden detaillierte Anforderungen gesammelt,
+   Analyse betrieben und Entwurf grundsÃ¤tzliche
+   Architekturentscheidungen getroffen sowie der Plan fÃ¼r die
+   Konstruktion gemacht. (use case diagrams)
+
+-  Die Konstruktion ist ein iterativer und inkrementeller ProzeÃŸ. Jede
+   Iteration dieser Phase baut Software- Prototypen mit ProduktqualitÃ¤t,
+   die getestet werden und einen Teil der Anforderungen des Projekts
+   umsetzen. (use-case driven)
+
+-  Die Ãœberleitungsphase enthÃ¤lt den Beta-Test, Leistungssteigerung und
+   Benutzer-Training.
+
+.. figure:: figure/softwareentwicklung/unified_process_2.png
+   :align: center
+   :alt: 
+
+  

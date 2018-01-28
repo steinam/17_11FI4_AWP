@@ -1,0 +1,417 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>1. Vorgehensmodelle &#8212; Softwareentwicklung</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
+    <link rel="search" title="Suche" href="search.html" />
+    <link rel="next" title="2. Testverfahren" href="testverfahren.html" />
+    <link rel="prev" title="Softwareentwicklung!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Stichwortverzeichnis"
+             accesskey="I">Index</a></li>
+        <li class="right" >
+          <a href="testverfahren.html" title="2. Testverfahren"
+             accesskey="N">weiter</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Softwareentwicklung!"
+             accesskey="P">zurück</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">SWE</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Inhalt</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Vorgehensmodelle</a><ul>
+<li><a class="reference internal" href="#wasserfallmodell">1.1. Wasserfallmodell</a><ul>
+<li><a class="reference internal" href="#eigenschaften-wasserfallmodell">1.1.1. Eigenschaften Wasserfallmodell</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#v-modell">1.2. V-Modell</a><ul>
+<li><a class="reference internal" href="#fazit-v-modell">1.2.1. Fazit V-Modell</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#prototypmodell">1.3. Prototypmodell</a><ul>
+<li><a class="reference internal" href="#arten-von-prototypen">1.3.1. Arten von Prototypen</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#spiralmodell">1.4. Spiralmodell</a><ul>
+<li><a class="reference internal" href="#bewertung">1.4.1. Bewertung</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xp-xtreme-programming">1.5. XP (Xtreme Programming)</a></li>
+<li><a class="reference internal" href="#scrumm">1.6. Scrumm</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Vorheriges Thema</h4>
+  <p class="topless"><a href="index.html"
+                        title="vorheriges Kapitel">Softwareentwicklung!</a></p>
+  <h4>Nächstes Thema</h4>
+  <p class="topless"><a href="testverfahren.html"
+                        title="nächstes Kapitel">2. Testverfahren</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Diese Seite</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/vorgehensmodelle.rst.txt"
+            rel="nofollow">Quellcode anzeigen</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Schnellsuche</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Los" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="vorgehensmodelle">
+<h1>1. Vorgehensmodelle<a class="headerlink" href="#vorgehensmodelle" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Ein Vorgehensmodell ist ein für die Programmierung angepasstes Softwareentwicklungsmodell, welches dazu deint, den Prozess der Softwareentwicklung übersichtlicher zu gestalten und in der Komplexität beherrschbar zu machen.</p>
+<p>Es soll damit das „klassische“ Coe and Fix-Vorgehen ersetzen, dessen Ansatz darin besteht, einfach ein Programm zu shcreiben und auftretende Fehler zu beheben.</p>
+<div class="figure align-center">
+<img alt="code_and_fix" src="_images/vorgehensm_code_and_fix.png" />
+</div>
+<p>Durch die notwendige Fehlerbehebung wird das Programm evtl. so umstrukturiert, dass weitere Fehler und deren Behebungen notwendig werden.</p>
+<p>In Vorgehensmodellen dagegen durchlebt Software verschiedene Phasen und  Stadien, die es dem Entwickler ermöglichen, die Komplexität von Software in strukturelle Teile zu zerlegen!</p>
+<div class="figure align-center">
+<img alt="vorgehensmodell" src="_images/vorgehensmodell.png" />
+</div>
+<div class="section" id="wasserfallmodell">
+<h2>1.1. Wasserfallmodell<a class="headerlink" href="#wasserfallmodell" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Das Wasserfallmodell ist ein lineares Vorgehensmodell, das in Phasen organisiert wird. Dabei gehen
+die Phasenergebnisse wie bei einem Wasserfall immer als bindende Vorgaben für die nächsttiefere
+Phase ein.</p>
+<div class="figure align-center">
+<img alt="Wasserfall" src="_images/wasserfall2.png" />
+</div>
+<div class="sidebar">
+<p class="first sidebar-title">Anmerkung</p>
+<p><a class="reference download internal" href="_downloads/waterfall.pdf" download=""><code class="xref download docutils literal"><span class="pre">Wasserfall_Royce</span></code></a>.</p>
+<p><a class="reference download internal" href="_downloads/2010_Real_Software_Engineering.mp4" download=""><code class="xref download docutils literal"><span class="pre">Video</span></code></a>.</p>
+<p class="last"><a class="reference external" href="http://homepages.cs.ncl.ac.uk/brian.randell/NATO/">http://homepages.cs.ncl.ac.uk/brian.randell/NATO/</a></p>
+</div>
+<p>Das oben abgebildete Wasserfallmodell war in dieser Form von seinem Schöpfer nie gedacht. Durch die Einfachheit seines Ansatzes hat es sich aber leider in den Köpfen vieler Softwareentwickler festgesetzt. Der ursprüngliche Ansatz von Royce sah ein deutlich komplexeres Modell von Rückkopplungen vor.</p>
+<div class="section" id="eigenschaften-wasserfallmodell">
+<h3>1.1.1. Eigenschaften Wasserfallmodell<a class="headerlink" href="#eigenschaften-wasserfallmodell" title="Link zu dieser Überschrift">¶</a></h3>
+<p><strong>Charakteristika</strong></p>
+<ul class="simple">
+<li>Aktivitäten sind in der richtigen Reihenfolge und vollen Breite durchzuführen.</li>
+<li>Am Ende jeder AktivitÃ¤t steht ein Dokument (dokumentgetriebenes Modell)</li>
+<li>Entwicklungsablauf ist sequentiell, vorhergehende Aktivität muss beendet werden, bevor die nächste beginnt.</li>
+<li>Orientiert am Top-Down-Vorgehen</li>
+<li>Einfach, verständlich, wenig Managementaufwand</li>
+<li>Benutzerbeteiligung nur in der Definitionsphase</li>
+</ul>
+<p><strong>Vorteile</strong></p>
+<ul class="simple">
+<li>Klarer und schlüssiger Aufbau in einzelne Abschnitte.</li>
+<li>Der Weg der Entwicklung ist weitestgehend vorgegeben.</li>
+<li>Meilensteine können zeitlich- und ergebnisorientiert kontrolliert werden.</li>
+</ul>
+<p><strong>Nachteile</strong></p>
+<ul class="simple">
+<li>Notwendige Kurskorrekturen nicht frühzeitig erkennbar</li>
+<li>Sequentialität nicht immer nötig</li>
+<li>Gefahr, dass Dokumente wichtiger als das System werden</li>
+<li>Risikofaktoren werden u.U. zu wenig berücksichtigt</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v-modell">
+<h2>1.2. V-Modell<a class="headerlink" href="#v-modell" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Das V-Modell fasst eine Reihe von ähnlich gelagerten Tätigkeiten zu einem sogenannten
+Vorgehensbaustein zusammen. Insgesamt gibt es 22 dieser Vorgehensbausteine, wobei einige bei
+allen Projekten Anwendung finden. Diese werden daher als V-Modell-Kern bezeichnet.</p>
+<p>Charakteristiken:</p>
+<ul class="simple">
+<li>Entwicklungsmodell für ein Gesamtsystem</li>
+<li>Einheitlicher Standard im öffentlichen Anwendungsbereiches</li>
+<li>ISO-Standard für Militär- und Bundesbehörden</li>
+<li>Einheitliche Vorgaben für jedes einzelne Submodell</li>
+</ul>
+<p>Es wird in vier Sub-Modelle unterteilt, die dann an den tatsächlichen Bedarf angepasst werden.</p>
+<div class="figure align-center">
+<img alt="VModell" src="_images/vmodell_core.png" />
+</div>
+<p>Das V-Modell ist stark dokumentenorientiert. Es definiert eine Reihe von Dokumenten, die als Produkte bezeichnet werden. Diese setzen sich aus einzelnen Themen (Kapiteln) zusammen. Produkte, die einen starken inhaltlichen Zusammenhang haben, werden wiederum derselben Produktgruppe zugeordnet</p>
+<p>Das Submodell Softwareerstellung (SWE) basiert auf dem Wasserfallmodell. Eine Erweiterung
+gegenüber dem Wasserfallmodell sind die zeitlich nachfolgenden Testphasen, die im rechten, nach
+oben führenden Ast dargestellt werden. Den spezifizierenden Phasen stehen jeweils testende Phasen
+gegenüber, was in der Darstellung ein charakteristisches <cite>V</cite> ergibt.</p>
+<div class="figure align-center">
+<img alt="Vorgehensmodell" src="_images/vmodell_swe.png" />
+</div>
+<div class="section" id="fazit-v-modell">
+<h3>1.2.1. Fazit V-Modell<a class="headerlink" href="#fazit-v-modell" title="Link zu dieser Überschrift">¶</a></h3>
+<p>Das V-Modell ist im SWE-Teil eine Erweiterung des Wasserfallmodells, welches <strong>Qualitätssicherung</strong> integriert.
+<strong>Verifikation</strong> und <strong>Validation</strong> der Software werden Bestandteile des Modells.</p>
+<p>Verifikation:
+- „Are we building the product right?“
+- Überprüfung der Übereinstimmung zwischen Software-Produkt und seiner Spezifikation.</p>
+<p>Validation:
+- „Are we building the right product?“
+- Eignung bzw. Wert eines Produkts bezogen auf seinen Einsatzzweck.</p>
+<p><strong>Vorteile</strong></p>
+<ul class="simple">
+<li>Integrierte, detaillierte Beschreibung von Systemerstellung, Qualitätssicherung, Konfigurationsmanagement und Projektmanagement</li>
+<li>Generisches Vorgehensmodell</li>
+<li>Gut geeignet für große Projekte ???</li>
+</ul>
+<p><strong>Nachteile</strong></p>
+<ul class="simple">
+<li>Unkritische Übernahme der Konzepte, die für eingebettete Systeme entwickelt wurden, für andere Anwendungstypen</li>
+<li>Software-Bürokratie bei kleinen und mittleren Projekten</li>
+<li>Ohne CASE-Unterstützung nicht handhabbar</li>
+</ul>
+</div>
+</div>
+<div class="section" id="prototypmodell">
+<h2>1.3. Prototypmodell<a class="headerlink" href="#prototypmodell" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Prototyping ist ein schnelles Verfahren zur Realisierung eines Beispielsystems, welches
+schnell zu ersten Ergebnissen führt und frühzeitiges Feedback bezüglich der Eignung eines
+Lösungsansatzes ermöglicht.</p>
+<p>Es lößt damit einige klassische Probleme des Wasserfalmodells:</p>
+<ul class="simple">
+<li>Auftraggeber / Endbenutzer <strong>können oft Anforderungen nicht vollständig / explizit formulieren</strong>.
+Dies ist aber in klassischen Definitionsphasen nötig!</li>
+<li><strong>Kooperation zwischen Anwendern und Entwicklern endet mit der
+Definitionsphase:</strong> Entwicklungsabteilungen ziehen sich nach
+Definitionsphase zurück und präsentieren erst nach Fertigstellung das
+Ergebnis; wünschenswerte Koordination zum Lernen von den jeweils
+anderen unterbleibt</li>
+<li>Oft existieren <strong>unterschiedliche Lösungswege</strong>, die besser experimentell
+erprobt werden und mit dem Auftraggeber diskutiert werden können.</li>
+<li>Manche Anforderungen lassen sich theoretisch nicht garantieren (z.B.
+Echtzeitanforderungen). Vor dem Abschluss der Definitionsphase muss
+also ggf. einiges ausprobiert werden.</li>
+<li>Das Überzeugen des Auftraggebers von der <strong>prinzipiellen
+Durchführbarkeit</strong> oder Handhabung einer Idee während der
+Akquisitionsphase wird nicht unterstützt (Folge für
+Verantwortungsteilung, Mittelfluss, etc).</li>
+</ul>
+<div class="figure align-center">
+<img alt="Idee" src="_images/prototype_idee.png" />
+</div>
+<p>Vorteil:</p>
+<ul class="simple">
+<li>Das Prototypmodell kann sinnvoll in andere Prozessmodelle integriert werden.</li>
+<li>Verbessert die Planung und Verifikation von Softwaresystemen.</li>
+<li>Auftraggeber wird stärker an der Entwicklung beteiligt.</li>
+<li>Anforderungen der Anwender können laufend präzisiert werden.</li>
+<li>Kreative Alternativlösungen möglich.</li>
+<li>Reduziert das Entwicklungsrisiko.</li>
+<li>Fehlerhafte Wechselwirkungen der Komponenten werden früher erkannt.</li>
+</ul>
+<p>Nachteil:</p>
+<ul class="simple">
+<li>Erfordern höheren Entwicklungsaufwand, wenn Sie zusätzlich erstellt werden.</li>
+<li>„Wegwerf-Prototypen“ werden aus Zeitgründen doch im Zielprodukt integriert.</li>
+<li>Werden oft als „Ersatz“ für eine fehlende Dokumentation betrachtet.</li>
+</ul>
+<div class="section" id="arten-von-prototypen">
+<h3>1.3.1. Arten von Prototypen<a class="headerlink" href="#arten-von-prototypen" title="Link zu dieser Überschrift">¶</a></h3>
+<ul>
+<li><p class="first">Demonstrationsprototyp:</p>
+<p>Dient zur Auftragsakquisition; verschafft Eindruck, wie das Produkt
+aussehen kann. Wichtig: Wird spÃ¤ter weggeworfen!</p>
+</li>
+<li><p class="first">Prototyp im engeren Sinne:</p>
+<p>Wird parallel zur Modellierung des Anwendungsbereiches erstellt, um
+Aspekte der Benutzungsschnittstelle oder Teile der FunktionalitÃ¤t zu
+veranschaulichen. Dient zur Analyse. (Exploratives Prototyping)</p>
+</li>
+<li><p class="first">Labormuster:</p>
+<p>Dient zur Beantwortung konstruktionsbezogener Fragen und
+Alternativen.</p>
+</li>
+<li><p class="first">Pilotsystem:</p>
+<p>Dient nicht nur zur experimentelle Erprobung oder Veranschaulichung,
+sondern ist schon Kern des Produkts. Unterscheidung zwischen Prototyp
+und Produkt verschwindet spÃ¤ter. Die Weiterentwicklung erfolgt in
+Zyklen unter Beteiligung der Benutzer. Es ist ein wesentlich
+sorgfältigerer Entwurf nötig, da der Prototyp spÃ¤ter weiterbenutzt
+wird! Benutzerdokumentation wird ebenfalls nötig. (Evolutionäres
+Prototyping)</p>
+</li>
+<li><p class="first">Horzontale und vertikale Prototypen</p>
+</li>
+</ul>
+<img alt="_images/proto_hor_vert.png" src="_images/proto_hor_vert.png" />
+<img alt="_images/prototype_example.png" src="_images/prototype_example.png" />
+</div>
+</div>
+<div class="section" id="spiralmodell">
+<h2>1.4. Spiralmodell<a class="headerlink" href="#spiralmodell" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Das Spiralmodell ist eigentlich ein Modell höherer Ordnung, da es andere Modelle integriert.
+Das Spiralmodell besteht aus vier Quadranten, die während der Systementwicklung für
+jede Verfeinerungsebene jeweils einmal nacheinander durchlaufen werden. Das
+mehrfache Durchlaufen wird als Spirale dargestellt. Die Fläche der Spirale beschreibt die
+summierten Kosten der aktuellen Entwicklung.</p>
+<div class="figure align-center">
+<img alt="Spiralmodell" src="_images/Spiralmodell.png" />
+</div>
+<ul class="simple">
+<li>Schritt 1:<ul>
+<li>Identifizierung der Ziele des Teilprodukts (Leistung,
+Funktionalität, Anpassbarkeit, …)</li>
+<li>Alternative Möglichkeiten zur Realisierung des Teilprodukts
+finden.</li>
+<li>Randbedingungen bei verschiedenen Alternativen finden</li>
+</ul>
+</li>
+<li>Schritt 2:<ul>
+<li>Evaluierung der Alternativen unter Berücksichtigung aller
+Alternativen</li>
+<li>Identifizieren und ggf. Ãœberwinden von Risiken (durch Prototypen,
+Simulation, …)</li>
+</ul>
+</li>
+<li>Schritt 3:<ul>
+<li>Abhängig vom Risiko wird ein Prozessmodell festgelegt (oder eine
+Kombination).</li>
+<li>Anwendung des Modells</li>
+</ul>
+</li>
+<li>Schritt 4:<ul>
+<li>Planung des nächsten Zyklus, Überprüfung der nächsten 3 Schritte
+im nächsten Zyklus, Einverständnis mit Beteiligten sichern.</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="bewertung">
+<h3>1.4.1. Bewertung<a class="headerlink" href="#bewertung" title="Link zu dieser Überschrift">¶</a></h3>
+<p>Eigenschaften</p>
+<ul class="simple">
+<li>Risikogetriebenes Modell, da Hauptziel die Minimierung des Risikos
+ist.</li>
+<li>Ziel: Beginne im Kleinen, halte die Spirale so eng wie möglich und
+erreiche das Ziel mit minimalen Kosten.</li>
+</ul>
+<p><strong>Vorteile</strong></p>
+<ul class="simple">
+<li>Periodische Überprüfung und ggf. Neufestlegung des Prozessmodells</li>
+<li>Prozessmodell ist nicht für die gesamte Dauer des Projekts festgelegt.</li>
+<li>Flexibel, leichtere Umsteuerung</li>
+<li>Erleichtert Wiederverwendung von Software durch Betrachtung von
+Alternativen.</li>
+</ul>
+<p>Nachteile</p>
+<ul class="simple">
+<li>Hoher Managementaufwand</li>
+<li>Für kleine und mittlere Projekte weniger gut geeignet.</li>
+<li>Wissen über Identifizierung und Management von Risiken ist noch nicht
+sehr verbreitet.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="xp-xtreme-programming">
+<h2>1.5. XP (Xtreme Programming)<a class="headerlink" href="#xp-xtreme-programming" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Extreme Programming (XP; auch Extremprogrammierung) ist eine Methode, die das Lösen einer Programmieraufgabe in den Vordergrund der Softwareentwicklung stellt und dabei einem formalisierten Vorgehen geringere Bedeutung zumisst. Diese Vorgehensweise definiert ein Vorgehensmodell der Softwaretechnik, das sich den Anforderungen des Kunden in kleinen Schritten annähert. Die Wirksamkeit des Ansatzes ist umstritten (siehe Abschnitt Kritik).</p>
+<div class="figure align-center">
+<img alt="" src="_images/xp_zyklus.png" />
+</div>
+<p>Die Darstellung der zu erfüllenden Funktionalitäten wird durch sog. <strong>User Stories</strong> abgebildet. Hier definiert man eine zu erfüllende Anforderung des Produkts aus der Anwendersicht heraus. Die Userstory führt dann zu konkreten Aufgaben (<strong>Tasks</strong>), die wiederum Teil eines <strong>Iteration**slaufes sind. Die Aufwandsschätzung wird vom Programmierteam durch sog. **StoryPoints</strong> definiert, die einer UserStory zugeordnet werden.</p>
+<div class="figure align-center">
+<img alt="" src="_images/xp_iteration.png" />
+</div>
+<div class="figure align-center">
+<img alt="" src="_images/xp_story_point.png" />
+</div>
+<p>XP sieht eine Reihe von Konzepten vor, die sich in Begriffen manifestieren und eine Abgrenzung zu anderen Vorgehensmodellen darstellen.</p>
+<div class="figure align-center">
+<img alt="" src="_images/xp_concepts.png" />
+</div>
+<div class="figure align-center">
+<img alt="" src="_images/xp_loop.png" />
+</div>
+<p>XP ist eine Implementierung des sog Agilen Manifests (www.agilemanifesto.org). In diesem Manifest formulierten anfangs einige Entwickler ihr Grundverständnis, wie moderne Softwarentwicklung aussehen sollte und konkretisierten später diese durch wegweisende Konzepte wie z.B. das Prinzip von UnitTesting, PairProgramming, Continuous Integration.</p>
+<p>Sie grenzen sich damit von den herkömmlichen Vorgehensmodellen ab</p>
+<div class="figure align-center">
+<img alt="" src="_images/xp_gedanken.png" />
+</div>
+<p>Ziel:</p>
+<p>Schnellere Bereitstellung der Software als bei herkömmlichen Methoden
+Höhere Softwarequalität</p>
+</div>
+<div class="section" id="scrumm">
+<h2>1.6. Scrumm<a class="headerlink" href="#scrumm" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Scrum übernahm viele Konzepte von XP und entwicklete zusätzlich eigene Ansätze</p>
+<p>Siehe eigenes Dokument …</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Stichwortverzeichnis"
+             >Index</a></li>
+        <li class="right" >
+          <a href="testverfahren.html" title="2. Testverfahren"
+             >weiter</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Softwareentwicklung!"
+             >zurück</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">SWE</a> &#187;</li> 
+      </ul>
+    </div>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+  </body>
+</html>

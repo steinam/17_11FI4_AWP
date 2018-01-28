@@ -1,0 +1,948 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>2. Testverfahren &#8212; Softwareentwicklung</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
+    <link rel="search" title="Suche" href="search.html" />
+    <link rel="next" title="3. Metriken" href="swmetriken.html" />
+    <link rel="prev" title="1. Vorgehensmodelle" href="vorgehensmodelle.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Stichwortverzeichnis"
+             accesskey="I">Index</a></li>
+        <li class="right" >
+          <a href="swmetriken.html" title="3. Metriken"
+             accesskey="N">weiter</a> |</li>
+        <li class="right" >
+          <a href="vorgehensmodelle.html" title="1. Vorgehensmodelle"
+             accesskey="P">zurück</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">SWE</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Inhalt</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Testverfahren</a><ul>
+<li><a class="reference internal" href="#komponententest">2.1. Komponententest</a><ul>
+<li><a class="reference internal" href="#blackbox">2.1.1. Blackbox</a></li>
+<li><a class="reference internal" href="#unit-test">2.1.2. Unit-Test</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tdd">2.2. TDD</a><ul>
+<li><a class="reference internal" href="#test-1">2.2.1. Test 1</a></li>
+<li><a class="reference internal" href="#test-2">2.2.2. Test 2</a></li>
+<li><a class="reference internal" href="#refactoring">2.2.3. Refactoring</a></li>
+<li><a class="reference internal" href="#test-3">2.2.4. Test 3</a></li>
+<li><a class="reference internal" href="#test-4">2.2.5. Test 4</a></li>
+<li><a class="reference internal" href="#test-5">2.2.6. Test 5</a></li>
+<li><a class="reference internal" href="#test-6">2.2.7. Test 6</a></li>
+<li><a class="reference internal" href="#test-7">2.2.8. Test 7</a></li>
+<li><a class="reference internal" href="#test-8">2.2.9. Test 8</a></li>
+<li><a class="reference internal" href="#test-9">2.2.10. Test 9</a></li>
+<li><a class="reference internal" href="#test-10">2.2.11. Test 10</a></li>
+<li><a class="reference internal" href="#test-11">2.2.12. Test 11</a></li>
+<li><a class="reference internal" href="#zusammenfassung">2.2.13. Zusammenfassung</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#coverage-black-und-white">2.3. Coverage(Black- und White)</a><ul>
+<li><a class="reference internal" href="#anweisungsuberdeckung-c0-masz">2.3.1. Anweisungsüberdeckung C0 - Maß</a></li>
+<li><a class="reference internal" href="#zweiguberdeckung-c1-masz">2.3.2. Zweigüberdeckung C1 - Maß</a></li>
+<li><a class="reference internal" href="#pfadabdeckung-c2-masz">2.3.3. Pfadabdeckung C2 - Maß</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Vorheriges Thema</h4>
+  <p class="topless"><a href="vorgehensmodelle.html"
+                        title="vorheriges Kapitel">1. Vorgehensmodelle</a></p>
+  <h4>Nächstes Thema</h4>
+  <p class="topless"><a href="swmetriken.html"
+                        title="nächstes Kapitel">3. Metriken</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Diese Seite</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/testverfahren.rst.txt"
+            rel="nofollow">Quellcode anzeigen</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Schnellsuche</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Los" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="testverfahren">
+<h1>2. Testverfahren<a class="headerlink" href="#testverfahren" title="Link zu dieser Überschrift">¶</a></h1>
+<a class="reference internal image-reference" href="_images/testn_bug.jpg"><img alt="_images/testn_bug.jpg" src="_images/testn_bug.jpg" style="width: 8cm;" /></a>
+<div class="sidebar">
+<p class="first sidebar-title">Links</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://services.informatik.hs-mannheim.de/~knauber/BCSc-SE/">knauber</a></li>
+<li><a class="reference external" href="https://www.pst.ifi.lmu.de/Lehre/fruhere-semester/wise-12-13/sep/06-unit-testing.pdf">unit testing</a></li>
+<li><a class="reference external" href="http://www.iste.uni-stuttgart.de/fileadmin/user_upload/iste/se/people/schmidberger/downloads/Grundlagen_Testen-110_k.pdf">Grundlagen Testen</a></li>
+</ul>
+</div>
+<p>Schon immer war das Testen von Software bzw. das Finden von Fehlern ein integraler Bestandteil jeder Programmierung bzw. der Sicherung der Softwarequalität.
+Testverfahren sind ein wichtiger Bestandteil für das Einhalten von Softwarequalität und integraler Bestandteil moderner Softwareentwicklung. Sie sollte sich mittlerweile aus dem „hässlichen Entlein“ zum „Goldenen Schwan“ entwickelt haben, da es sich eigentlich keine Softwarefirma leisten kann, seine Produkte ohne vernünftige Tests auszuliefern.</p>
+<p>Die unterschiedlichen Arten des Sicherung von Softwarequalität können wie folgt beschrieben werden.</p>
+<img alt="_images/pruefverfahren.png" src="_images/pruefverfahren.png" />
+<p>Die folgenden Erläuterungen beziehen sich lediglich auf unterschiedliche Arten von Komponententests.
+Eine detaillierter Klassifikation steht unter <a class="reference external" href="https://de.wikipedia.org/wiki/Softwaretest">https://de.wikipedia.org/wiki/Softwaretest</a>&gt;_ sowie <a class="reference external" href="http://www.german-testing-board.info/lehrplaene/istqbr-certified-tester-schema/glossar/">http://www.german-testing-board.info/lehrplaene/istqbr-certified-tester-schema/glossar/</a>&gt; zur Verfügung.</p>
+<div class="section" id="komponententest">
+<h2>2.1. Komponententest<a class="headerlink" href="#komponententest" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Der Modultest, auch Komponententest oder Unittest genannt, ist ein Test auf der Ebene der einzelnen Module der Software. Testgegenstand ist die Funktionalität innerhalb einzelner abgrenzbarer Teile der Software (Module, Programme oder Unterprogramme, Units oder Klassen). Testziel dieser häufig durch den Softwareentwickler selbst durchgeführten Tests ist der Nachweis der technischen Lauffähigkeit und korrekter fachlicher (Teil-) Ergebnisse.  (Wikipedia)</p>
+<div class="section" id="blackbox">
+<h3>2.1.1. Blackbox<a class="headerlink" href="#blackbox" title="Link zu dieser Überschrift">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Demo</p>
+<p class="last"><a class="reference download internal" href="_downloads/blackbox_testwerte.png" download=""><code class="xref download docutils literal"><span class="pre">Schueler</span></code></a>
+<a class="reference download internal" href="_downloads/DateChecker.zip" download=""><code class="xref download docutils literal"><span class="pre">DateChecker</span></code></a></p>
+</div>
+<p>Der Black-Box-Test testet eine Komponente <strong>ohne das Wissen um dessen Implementierung</strong>. Er kann deshalb nur prüfen, ob eine Eingabe von bestimmten Werten zu einem erwarteten Ergebnis führt. Die Testfälle werden deshalb ausschließlich aus der Spezifikation der Komponente abgeleitet.</p>
+<p>Da die Anzahl der Testfälle pro Komponente theoretisch unbegrenzt sind, haben sich bestimmtet Techniken der Eingrenzung der Testkombinationen gebildet.</p>
+<p><strong>Äquivalenz-Klasse</strong></p>
+<p>Damit ist der Umstand gemeint, dass eine Komponente häufig einen bestimmten Wertebereich an möglichen Eingabewerten vorsieht. Ziel ist es nun, durch die Auswahl typischer und untypischer Eingabewerte eine hohe Abdeckung möglicher Werte zu erreichen.</p>
+<div class="admonition-beispiel admonition">
+<p class="first admonition-title">Beispiel</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">DayOfWeek</span><span class="p">(</span><span class="kt">int</span> <span class="n">year</span><span class="p">,</span> <span class="kt">int</span> <span class="n">month</span><span class="p">,</span> <span class="kt">int</span> <span class="n">day</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="p">....</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Geben Sie mögliche und unmögliche Wertebereiche für diese Methode vor.</p>
+<div class="toggle last docutils container">
+<div class="header docutils container">
+<strong>Lösung!</strong></div>
+<ul class="simple">
+<li>T1: 13.03.1964 //Normal</li>
+<li>T2: 25.10.1983 //Normal</li>
+<li>T3: 34.8.2015  /Falscher Tag</li>
+<li>T4: 13.15.2009 //Falscher Monat</li>
+</ul>
+</div>
+</div>
+<p><strong>Grenzwerte</strong></p>
+<p>Da Funktionen häufig an den Grenzen von Schleifen fehlerhaft implementiert sein können, testet man diese Grenzwerte isoliert. Im obigen Fall könnte dies sein:</p>
+<div class="admonition-grenzwerte admonition">
+<p class="first admonition-title">Grenzwerte</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<strong>Lösung !</strong></div>
+<ul class="simple">
+<li>der 1. Tag eines Monats</li>
+<li>der 31.12. eines Jahres</li>
+<li>das Datum eines Schaltjahrs</li>
+</ul>
+</div>
+<div class="toggle last docutils container">
+<div class="header docutils container">
+<strong>Quellcode</strong></div>
+<div class="highlight-csharp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">testDayOfWeekBoundary</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">wd</span><span class="p">,</span><span class="n">day</span><span class="p">=</span><span class="m">0</span><span class="p">,</span> <span class="n">month</span><span class="p">=</span><span class="m">0</span><span class="p">,</span> <span class="n">year</span><span class="p">=</span><span class="m">0</span><span class="p">;</span>
+    <span class="n">year</span> <span class="p">=</span> <span class="m">2000</span><span class="p">;</span> <span class="n">n</span><span class="p">=</span><span class="m">11</span><span class="p">;</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Testfall&quot;</span> <span class="p">+</span> <span class="s">&quot;\t&quot;</span> <span class="p">+</span> <span class="s">&quot;Tag&quot;</span> <span class="p">+</span><span class="s">&quot;\t&quot;</span><span class="p">+</span> <span class="s">&quot;Monat&quot;</span> <span class="p">+</span> <span class="s">&quot;\t&quot;</span> <span class="p">+</span> <span class="s">&quot;Jahr&quot;</span> <span class="p">+</span> <span class="s">&quot;\t&quot;</span> <span class="p">+</span> <span class="s">&quot;Wochentag&quot;</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">=</span><span class="m">3</span><span class="p">;</span><span class="n">i</span><span class="p">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="p">++)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">==</span><span class="m">3</span><span class="p">)</span> <span class="p">{</span><span class="n">day</span><span class="p">=</span><span class="m">1</span><span class="p">;</span> <span class="n">month</span><span class="p">=</span><span class="m">1</span><span class="p">;}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">==</span><span class="m">4</span><span class="p">)</span> <span class="p">{</span><span class="n">day</span><span class="p">=</span><span class="m">31</span><span class="p">;</span> <span class="n">month</span><span class="p">=</span><span class="m">12</span><span class="p">;}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">==</span><span class="m">5</span><span class="p">)</span> <span class="p">{</span><span class="n">day</span><span class="p">=</span><span class="m">0</span><span class="p">;</span> <span class="n">month</span><span class="p">=</span><span class="m">1</span><span class="p">;}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">==</span><span class="m">6</span><span class="p">)</span> <span class="p">{</span><span class="n">day</span><span class="p">=</span><span class="m">32</span><span class="p">;</span> <span class="n">month</span><span class="p">=</span><span class="m">1</span><span class="p">;}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">==</span><span class="m">7</span><span class="p">)</span> <span class="p">{</span><span class="n">day</span><span class="p">=</span><span class="m">7</span><span class="p">;</span> <span class="n">month</span><span class="p">=</span><span class="m">0</span><span class="p">;}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">==</span><span class="m">8</span><span class="p">)</span> <span class="p">{</span><span class="n">day</span><span class="p">=</span><span class="m">7</span><span class="p">;</span> <span class="n">month</span><span class="p">=</span><span class="m">13</span><span class="p">;}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">==</span><span class="m">9</span><span class="p">)</span> <span class="p">{</span><span class="n">day</span><span class="p">=</span><span class="m">8</span><span class="p">;</span> <span class="n">month</span><span class="p">=</span><span class="m">1</span><span class="p">;</span><span class="n">year</span><span class="p">=</span><span class="m">0</span><span class="p">;}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">==</span><span class="m">10</span><span class="p">)</span> <span class="p">{</span><span class="n">day</span><span class="p">=</span><span class="m">8</span><span class="p">;</span> <span class="n">month</span><span class="p">=</span><span class="m">1</span><span class="p">;</span><span class="n">year</span><span class="p">=-</span><span class="m">1</span><span class="p">;}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">==</span><span class="m">11</span><span class="p">)</span> <span class="p">{</span><span class="n">day</span><span class="p">=</span><span class="m">8</span><span class="p">;</span> <span class="n">month</span><span class="p">=</span><span class="m">12</span><span class="p">;</span><span class="n">year</span><span class="p">=</span><span class="m">9999</span><span class="p">;}</span>
+
+        <span class="n">wd</span> <span class="p">=</span> <span class="n">Calendar</span><span class="p">.</span><span class="n">d_week</span><span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">year</span><span class="p">);</span>
+
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">i</span> <span class="p">+</span><span class="s">&quot;\t\t&quot;</span> <span class="p">+</span> <span class="n">day</span> <span class="p">+</span> <span class="s">&quot;\t&quot;</span> <span class="p">+</span> <span class="n">month</span> <span class="p">+</span> <span class="s">&quot;\t&quot;</span> <span class="p">+</span> <span class="n">year</span> <span class="p">+</span> <span class="s">&quot;\t&quot;</span> <span class="p">+</span> <span class="n">wd</span> <span class="p">+</span> <span class="s">&quot; &quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="unit-test">
+<h3>2.1.2. Unit-Test<a class="headerlink" href="#unit-test" title="Link zu dieser Überschrift">¶</a></h3>
+<p>Ein Unit-Test testet eine in sich geschlossene logische Komponente eines Programms. Diese Komponente ist häufig eine Methode, sie kann aber auch größere Konstrukte betreffen.</p>
+<p>Sie sollten folgende Anforderungen erfüllen:</p>
+<ul class="simple">
+<li>Automatisiert und wiederholbar</li>
+<li>Einfach zu erstellen</li>
+<li>Einmal geschrieben und für die Zukunft nutzbar</li>
+<li>Von jedem Entwickler ausführbar sein</li>
+<li>Einfach zu starten sein (Knopfdruck)</li>
+<li>Schnell sein</li>
+</ul>
+<p>Unit-Tests entsprechen von ihrer Absicht her eigentlich den sog. Black-Box-Tests. Durch die Verwendung von Unit-Test-Frameworks haben sie mittlerweile einen gewisse Eigenständigkeit erreicht.</p>
+<p><strong>UnitTest-Frameworks</strong></p>
+<p>Für fast jede Programmiersprache sind mittlerweile Frameworks erhältlich, die ein relativ komfortables Schreiben von Unittests ermöglicht. Sie entwickelten sich konzeptionell aus dem JUnit-Framework.</p>
+<img alt="_images/junit2.png" src="_images/junit2.png" />
+<p>Das NUnit-Framework (<a class="reference external" href="http://www.nunit.org">http://www.nunit.org</a>) wird in VisualStudio per Referenz oder über den PackageManager NuGet installiert. Über einen zusätzlich zu installierenden TestAdapter können die Tests auch sehr bequem ausgeführt werden.</p>
+<img alt="_images/NUnit_result_VStudio.png" src="_images/NUnit_result_VStudio.png" />
+<p>Damit NUnit die zu testenden Klassen erkennt, müssen Klassen und Methoden mit bestimmten Attributen belegt werden. So definiert das Attribut [TestFixture] eine Klasse als Testklasse; das Attribut [Test] eine Methode als Testmethode.</p>
+<p>Die Namen der Testmethoden sollten so gewählt werden, dass sie die Absicht des Tests ausdrücken. In diesem Sinne ist der unten verwendete Methodenname nicht aussagefähig genug und sollte beispielsweise in <em>Test_Correct_EasterMonth_and_EasterDate_For Year</em> benannt werden.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">KalendarRoutines</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">NUnit.Framework</span><span class="p">;</span>
+
+
+<span class="k">namespace</span> <span class="nn">TestKalendarRoutines</span>
+<span class="p">{</span>
+    <span class="c1">/// &lt;summary&gt;</span>
+    <span class="c1">/// Zusammenfassung für Class1.</span>
+    <span class="c1">/// &lt;/summary&gt;</span>
+<span class="na">    [TestFixture]</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">TestKalendarRoutines</span>
+    <span class="p">{</span>
+    <span class="p">....</span>
+    <span class="p">....</span>
+    <span class="p">...</span>
+    <span class="p">...</span>
+    <span class="c1">// better MethodName would be</span>
+    <span class="c1">//Test_Correct_EasterMonth_and_EasterDate_For Year</span>
+
+<span class="na">    [Test]</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">NU_Test_Easter</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">day</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">month</span><span class="p">;</span>
+
+        <span class="n">Calendar</span><span class="p">.</span><span class="n">easter</span><span class="p">(</span><span class="m">1998</span><span class="p">,</span> <span class="k">out</span> <span class="n">month</span><span class="p">,</span> <span class="k">out</span> <span class="n">day</span><span class="p">);</span>
+        <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="n">month</span><span class="p">);</span>
+        <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="m">12</span><span class="p">,</span> <span class="n">day</span><span class="p">);</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tdd">
+<h2>2.2. TDD<a class="headerlink" href="#tdd" title="Link zu dieser Überschrift">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Quellcode</p>
+<p class="last"><a class="reference download internal" href="_downloads/Stacker.zip" download=""><code class="xref download docutils literal"><span class="pre">Stacker</span></code></a>
+<a class="reference download internal" href="_downloads/Arbeitsblatt_TDD.docx" download=""><code class="xref download docutils literal"><span class="pre">AB</span> <span class="pre">TDD</span></code></a>
+<a class="reference download internal" href="_downloads/Testcases_Stack.txt" download=""><code class="xref download docutils literal"><span class="pre">TestCases</span> <span class="pre">Stack</span></code></a></p>
+</div>
+<p>Die Idee von Unit-Tests kann noch weiterentwickelt werden. Was hindert den Entwickler daran, vor dem Programmieren der Methoden schon die Tests für diese Methoden zu schreiben? Man nennt diesen Programmierstil <strong>TestDrivenDevelopment</strong> oder <a class="reference external" href="https://de.wikipedia.org/wiki/Testgetriebene_Entwicklung">Testgetriebene Entwicklung</a>.</p>
+<div class="admonition-diskussion admonition">
+<p class="first admonition-title">Diskussion</p>
+<p class="last">Erarbeiten Sie Gründe für und gegen diesen Ansatz</p>
+</div>
+<p><strong>Stacker goes TDD</strong></p>
+<p>Im folgenden Beispiel wird der TestDriven-Ansatz anhand einer zu entwickelnden Stack-Klasse dargestellt.</p>
+<p>Ihre Aufgabe besteht darin, einen unbegrenzten Stack zu implementieren. Ein Stack ist normalerweise eine Datenstruktur (Collection), die den Zugriff auf das zuletzt eingefügte Element beschränkt.</p>
+<img alt="_images/stack_tdd.png" src="_images/stack_tdd.png" />
+<p>Folgende Operationen solle unterstützt werden:</p>
+<ul class="simple">
+<li>Push
+Die Push-Funktion fügt ein Element oben auf den Stack hinzu</li>
+<li>Pop
+Die Pop-Function nimmt das oberste Element vom Stack und gibt es zurück</li>
+<li>Top
+Die Top-Funktion gibt das oberste Element vom Stack zurück, löscht es aber nicht</li>
+<li>IsEmpty
+Die IsEmpty-Funktion gibt true zurück, wenn kein Element auf dem Stack liegt.</li>
+</ul>
+<div class="admonition-aufgabe-losung admonition">
+<p class="first admonition-title">Aufgabe/Lösung</p>
+<p>Überlegen Sie sich Testfälle, die die gewünschten Anforderungen abdecken.</p>
+<div class="toggle last docutils container">
+<div class="header docutils container">
+<strong>Lösung</strong></div>
+<ol class="arabic simple">
+<li>Create a Stack and verify that IsEmpty is true.</li>
+<li>Push a single object on the Stack and verify that IsEmpty is false.</li>
+<li>Push a single object, Pop the object, and verify that IsEmpty is true.</li>
+<li>Push a single object, remembering what it is; Pop the object, and verify that the two objects are equal.</li>
+<li>Push three objects, remembering what they are; Pop each one, and verify that they are removed in the correct order.</li>
+<li>Pop a Stack that has no elements.</li>
+<li>Push a single object and then call Top. Verify that IsEmpty is false.</li>
+<li>Push a single object, remembering what it is; and then call Top. Verify that the object that is returned is the same as the one that was pushed.</li>
+<li>Call Top on a Stack with no elements.</li>
+</ol>
+</div>
+</div>
+<div class="admonition-aufgabe admonition">
+<p class="first admonition-title">Aufgabe</p>
+<p>Erstellen Sie in VisualStudio ein neue Projektmappe, welches zwei Projekte aufnimmt.
+Referenzieren Sie im StackTest-Projekt die zu programmierende Stacker.dll.</p>
+<img alt="_images/stack_projektmappe.jpg" class="last" src="_images/stack_projektmappe.jpg" />
+</div>
+<div class="section" id="test-1">
+<h3>2.2.1. Test 1<a class="headerlink" href="#test-1" title="Link zu dieser Überschrift">¶</a></h3>
+<p>Beim Schreiben der Testfälle ist selbstverständlich nachdenkenswert, mit welchem Fall man beginnt. Häufig wird man den Testfall auswählen, der das am häufigsten verwendete Szenario abbildet.</p>
+<p><strong>Create empty stack and verify thait isEmpty is True</strong></p>
+<p>Folgende Aufgaben sind vorzunehmen:</p>
+<ul class="simple">
+<li>Instanziierung eines Stacks</li>
+<li>Aufruf einer IsEmpty-Property</li>
+<li>IsEmpty sollte true zurückgeben, da noch keine Elemente im Stack vorhanden sind</li>
+</ul>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="na">[Test]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">Empty</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="n">Stacker</span> <span class="n">stack</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Stacker</span><span class="p">();</span>
+   <span class="n">Assert</span><span class="p">.</span><span class="n">IsTrue</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="n">IsEmpty</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>TDD definiert, dass ein Test vor dem Schreiben der Funktionalität geschrieben werden soll. Der Test wird deshalb nicht ausgeführt, sondern sogleich die isEmpty-Property der Stacker-Klasse implementiert.</p>
+<div class="admonition-uberlegung admonition">
+<p class="first admonition-title">Überlegung</p>
+<p class="last">Welche Aufwand ist notwendig, damit der Test erfolgreich ist ?</p>
+</div>
+<p>TDD folgt dem YAGNI-Prinzip. Schreibe nur soviel Code, dass der Test funktioniert. Im einfachsten Falle sieht das dann so aus:</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Stacker</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">bool</span> <span class="n">isEmpty</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsEmpty</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">isEmpty</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition-bemerkung admonition">
+<p class="first admonition-title">Bemerkung</p>
+<p>Martin Fowler sagt zu dieser „denkwürdigen“ Implementierung Folgendes:</p>
+<blockquote class="last">
+<div><p>There is a balance to achieve between anticipating future tests and implementation and being totally ignorant of the next test. In the beginning, you should focus on the test you are writing and not think about the other tests. As you become familiar with the technique and the task, you can increase the size of the steps. You should always keep in mind that large steps are harder to debug than smaller steps. Also, if your code is too complicated or provides functionality that is not tested, additional refactorings can result later.</p>
+<p>This discussion is also relevant to the earlier discussion about the test list. It is very clear from the test list that you have to store multiple items. Should you go ahead and use an ArrayList because you might need it later? Noâ€”the current tests do not support the need for an ArrayList. Wait and see what the tests look like before making that decision.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="test-2">
+<h3>2.2.2. Test 2<a class="headerlink" href="#test-2" title="Link zu dieser Überschrift">¶</a></h3>
+<p><strong>Push a single object on the Stack and verify that IsEmpty is false</strong></p>
+<p>Der Test verlangt, dass nach dem Einfügen eines Objektes die IsEmpty-Eigenschaft false ergeben muss. Dies kann durch folgenden Code erreicht werden</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="na">[Test]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">PushOne</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Stack</span> <span class="n">stack</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="p">();</span>
+    <span class="n">stack</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="s">&quot;first element&quot;</span><span class="p">);</span>
+    <span class="n">Assert</span><span class="p">.</span><span class="n">IsFalse</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="n">IsEmpty</span><span class="p">,</span> <span class="s">&quot;After Push, IsEmpty should be false&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Um dieses Testcode laufen lassen zu können, benötigen wir eine Push-Methode in der Stack-Klasse. Die minimale Implementierung sieht wie folgt aus:</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Push</span><span class="p">(</span><span class="kt">object</span> <span class="n">element</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Die Unit-Tests schlagen aber fehl, da isEmpty immer noch True zurückliefert. Deshalb muss die Implementierung leicht geändert werden.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Push</span><span class="p">(</span><span class="kt">object</span> <span class="n">element</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">isEmpty</span> <span class="p">=</span> <span class="n">False</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Die Push-Methode macht es auch erfoderlich, dass die Elemente in einer Art Liste gehalten werden. Da es aber zur Zeit keine Tests für diese Notwendigkeit gibt, warten wir damit noch.</p>
+</div>
+<div class="section" id="refactoring">
+<h3>2.2.3. Refactoring<a class="headerlink" href="#refactoring" title="Link zu dieser Überschrift">¶</a></h3>
+<p>Beide Testmethoden erzeugen jeweils ein neues Stack-Objekt. Dies und weitere Gemeinsamkeiten kann in eine Init-Methode ausgelagert werden, die das NUnit-Attribute [Setup] erhält.</p>
+<ul class="simple">
+<li>Private Instanzvariable stack, auf die alle Methoden zugreifen können.</li>
+<li>Funktion Init hat ein Setup-Attribut. Dies wird von NUnit verwendet und stellt sicher,
+dass dieser Code vor jedem Test ausgeführt wird .</li>
+<li>Es wird damit sichergestellt, dass jeder Test mit einer frischen Stack-Klasse
+durchgeführt wird.</li>
+</ul>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<strong>Lösung Quellcode</strong></div>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">NUnit.Framework</span><span class="p">;</span>
+<span class="na">[TestFixture]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">StackFixture</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">Stacker</span> <span class="n">stack</span><span class="p">;</span>
+
+<span class="na">    [SetUp]</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Init</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">stack</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Stacker</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="na">    [Test]</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">TestIFNewStackIsEmpty</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Assert</span><span class="p">.</span><span class="n">IsTrue</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="n">IsEmpty</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="na">    [Test]</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">PushOneElementOnStack_isEmpty_is_False</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">stack</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="s">&quot;first element&quot;</span><span class="p">);</span>
+        <span class="n">Assert</span><span class="p">.</span><span class="n">IsFalse</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="n">IsEmpty</span><span class="p">,</span> <span class="s">&quot;After Push, IsEmpty should be false&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="test-3">
+<h3>2.2.4. Test 3<a class="headerlink" href="#test-3" title="Link zu dieser Überschrift">¶</a></h3>
+<p><strong>Push a single object, Pop the object, and verify that IsEmpty is true</strong></p>
+<p>Dieser Test führt eine neue Methode Pop() ein, welches das oberste Element zurückgibt und es gleichzeitig vom Stack nimmt.</p>
+<p>Um dieses Verhalten zu testen, müssen wir</p>
+<ul class="simple">
+<li>Ein Element auf den Stack legen</li>
+<li>Das Element vom Stack nehmen</li>
+<li>Die IsEmpty-Property aufrufen und als Rückgabewert ein true erhalten</li>
+</ul>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="na">[Test]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">Pop</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">stack</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="s">&quot;first element&quot;</span><span class="p">);</span>
+    <span class="n">stack</span><span class="p">.</span><span class="n">Pop</span><span class="p">();</span>
+    <span class="n">Assert</span><span class="p">.</span><span class="n">IsTrue</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="n">IsEmpty</span><span class="p">,</span> <span class="s">&quot;After Push - Pop, IsEmpty should be true&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Der Code compiliert nicht, weil wir die Pop-Methode noch nicht implementiert haben.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Pop</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">isEmpty</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition-bemerkung admonition">
+<p class="first admonition-title">Bemerkung</p>
+<blockquote>
+<div>Notice that the implemented Pop method returns void. The requirements stated previously said that Pop should also return the topmost element. Because we do not have a test that tests that functionality, we will leave it that way until we have a failing test.</div></blockquote>
+<p>So far, we have been concerned with verifying that the IsEmpty property on the Stack is correct in regard to the Push and Pop operations. However, this is leading to code that does not further our understanding of the problem. In fact, we have written three tests that manage a Boolean variable.</p>
+<p class="last">It is now time to change direction and look at the actual objects that are pushed and popped onto the Stack.</p>
+</div>
+</div>
+<div class="section" id="test-4">
+<h3>2.2.5. Test 4<a class="headerlink" href="#test-4" title="Link zu dieser Überschrift">¶</a></h3>
+<p><strong>Push a single object, remembering what it is; Pop the object, and verify that the two objects are equal.</strong></p>
+<p>Die folgende Methode PushPop-ContentCheck +berprüft, ob das erzeugte Objekt auf den Stack gelegt, anschließend zurückgeholt wird und die Objektgleichheit gegeben ist.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="na">[Test]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">PushPopContentCheck</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">expected</span> <span class="p">=</span> <span class="m">1234</span><span class="p">;</span>
+    <span class="n">stack</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="n">expected</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">actual</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">stack</span><span class="p">.</span><span class="n">Pop</span><span class="p">();</span>
+    <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">actual</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Natürlich kann der Code nicht compilieren. Die Pop-Methode ist void, nicht vom Typ object. Um die Pop-Methode ein object zurückliefern zu lassen ist der einfachste Weg der folgende:</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">object</span> <span class="nf">Pop</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">isEmpty</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Der Test schlägt aberfehl weil wir nicht den Wert zurücklieferten, der auf dem Stack lag. Damit dies funkioniert müssen wir die Pop-Methode und die Implementierung der Stacker-Klasse ändern.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Stack</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">bool</span> <span class="n">isEmpty</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">object</span> <span class="n">element</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsEmpty</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+        <span class="k">return</span> <span class="n">isEmpty</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Push</span><span class="p">(</span><span class="kt">object</span> <span class="n">element</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">element</span> <span class="p">=</span> <span class="n">element</span><span class="p">;</span>
+        <span class="n">isEmpty</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">object</span> <span class="nf">Pop</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">isEmpty</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="kt">object</span> <span class="n">top</span> <span class="p">=</span> <span class="n">element</span><span class="p">;</span>
+        <span class="n">element</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">top</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Alle Tests funktionieren und wir können wieder einen Testfall abhaken.</p>
+<p>Allerdings führen wir noch ein kleines Refactoring durch. Wir ersetzen die isEmpty-Variable durch eine Bedingung, welche die element-Variable prüft. Dies ist ein besserer Ansatz, weil wir die element-VAriable selbst nehmen, ob zu bestimmen ob der Stack leer oder gefüllt ist.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Stack</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">object</span> <span class="n">element</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsEmpty</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">element</span> <span class="p">==</span> <span class="k">null</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Push</span><span class="p">(</span><span class="kt">object</span> <span class="n">element</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">element</span> <span class="p">=</span> <span class="n">element</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">object</span> <span class="nf">Pop</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">object</span> <span class="n">top</span> <span class="p">=</span> <span class="n">element</span><span class="p">;</span>
+        <span class="n">element</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">top</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-5">
+<h3>2.2.6. Test 5<a class="headerlink" href="#test-5" title="Link zu dieser Überschrift">¶</a></h3>
+<p><strong>Push three objects, remembering what they are; Pop each one, and verify that they are correct.</strong></p>
+<p>Der vorhergehende Test setzte und löschte jeweils nur ein Item. In diesem Test wollen wir drei Objekte nutzen um sicherzustellen, dass der Stack in der gewünschten Art und Weise funktioniert.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span>   <span class="c1">//Test 5</span>
+   <span class="o">[</span><span class="n">Test</span><span class="o">]</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">PushPopMultipleElements</span><span class="o">()</span>
+   <span class="o">{</span>
+       <span class="n">string</span> <span class="n">pushed1</span> <span class="o">=</span> <span class="s">&quot;1&quot;</span><span class="o">;</span>
+       <span class="n">stack</span><span class="o">.</span><span class="na">Push</span><span class="o">(</span><span class="n">pushed1</span><span class="o">);</span>
+       <span class="n">string</span> <span class="n">pushed2</span> <span class="o">=</span> <span class="s">&quot;2&quot;</span><span class="o">;</span>
+       <span class="n">stack</span><span class="o">.</span><span class="na">Push</span><span class="o">(</span><span class="n">pushed2</span><span class="o">);</span>
+       <span class="n">string</span> <span class="n">pushed3</span> <span class="o">=</span> <span class="s">&quot;3&quot;</span><span class="o">;</span>
+       <span class="n">stack</span><span class="o">.</span><span class="na">Push</span><span class="o">(</span><span class="n">pushed3</span><span class="o">);</span>
+       <span class="n">string</span> <span class="n">popped</span> <span class="o">=</span> <span class="o">(</span><span class="n">string</span><span class="o">)</span><span class="n">stack</span><span class="o">.</span><span class="na">Pop</span><span class="o">();</span>
+       <span class="n">Assert</span><span class="o">.</span><span class="na">AreEqual</span><span class="o">(</span><span class="n">pushed3</span><span class="o">,</span> <span class="n">popped</span><span class="o">);</span>
+       <span class="n">popped</span> <span class="o">=</span> <span class="o">(</span><span class="n">string</span><span class="o">)</span><span class="n">stack</span><span class="o">.</span><span class="na">Pop</span><span class="o">();</span>
+       <span class="n">Assert</span><span class="o">.</span><span class="na">AreEqual</span><span class="o">(</span><span class="n">pushed2</span><span class="o">,</span> <span class="n">popped</span><span class="o">);</span>
+       <span class="n">popped</span> <span class="o">=</span> <span class="o">(</span><span class="n">string</span><span class="o">)</span><span class="n">stack</span><span class="o">.</span><span class="na">Pop</span><span class="o">();</span>
+       <span class="n">Assert</span><span class="o">.</span><span class="na">AreEqual</span><span class="o">(</span><span class="n">pushed1</span><span class="o">,</span> <span class="n">popped</span><span class="o">);</span>
+   <span class="o">}</span>
+
+<span class="n">Mit</span> <span class="n">dem</span> <span class="n">Test</span> <span class="n">wollen</span> <span class="n">wir</span> <span class="n">sicherstellen</span><span class="o">,</span> <span class="n">dass</span> <span class="n">die</span> <span class="n">Objekte</span> <span class="n">in</span> <span class="n">der</span> <span class="n">umgekehrten</span> <span class="n">Reihenfolge</span> <span class="n">vom</span> <span class="n">Stack</span> <span class="n">gelöscht</span> <span class="n">und</span> <span class="n">zurÃ¼ckgeliefert</span> <span class="n">werden</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Der Code compiliert, aber NUnit meldet folgenden Fehler:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>Tests run: <span class="m">5</span>, Failures: <span class="m">1</span>, Not run: <span class="m">0</span>, Time: <span class="m">0</span>.031238 seconds
+Failures:
+<span class="m">1</span><span class="o">)</span> StackFixture.PushPopMultipleElements :
+expected:&lt;<span class="s2">&quot;2&quot;</span>&gt;
+but was:&lt;<span class="o">(</span>null<span class="o">)</span>&gt;
+at StackFixture.PushPopMultipleElements<span class="o">()</span> in c:<span class="se">\s</span>tackfixture.cs:line <span class="m">59</span>
+</pre></div>
+</div>
+<p>Eigentlich ist der Fehler klar: Wir kommen nicht mehr mit unserer einfachen Implementierung der Stack-Klasse aus. Wir benötigen eine Collection, um die verschiedenen Elemente des Stacks zu verwalten.</p>
+<p>Dieser Umbau erfordert einige Refactorisierungen, letztendlich ändert sich die Stacker-Klasse wie folgt:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>using System<span class="p">;</span>
+using System.Collections<span class="p">;</span>
+
+public class Stack
+<span class="o">{</span>
+private ArrayList <span class="nv">elements</span> <span class="o">=</span> new ArrayList<span class="o">()</span><span class="p">;</span>
+public bool IsEmpty
+<span class="o">{</span>
+    get
+    <span class="o">{</span>
+    <span class="k">return</span> <span class="o">(</span>elements.Count <span class="o">==</span> <span class="m">0</span><span class="o">)</span><span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+
+public void Push<span class="o">(</span>object element<span class="o">)</span>
+<span class="o">{</span>
+    elements.Insert<span class="o">(</span><span class="m">0</span>, element<span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+public object Pop<span class="o">()</span>
+<span class="o">{</span>
+    object <span class="nv">top</span> <span class="o">=</span> elements<span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="p">;</span>
+    elements.RemoveAt<span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="p">;</span>
+    <span class="k">return</span> top<span class="p">;</span>
+<span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Der Code compiliert und alle Tests funktionieren, obwohl wir fundamentale Änderungen am Quellcode vorgenommen haben.</p>
+<div class="admonition-bemerkung admonition">
+<p class="first admonition-title">Bemerkung</p>
+<p>Übersetzen Sie die beiden Abschnitte sinngemäß:</p>
+<p>This example shows very well the benefits of delaying implementation decisions while writing tests. Some would argue that we should have started out using an ArrayList to hold the elements of the Stack because it was a fore-gone conclusion that we would need a collection to hold the elements.</p>
+<p class="last">We did not do this because we are trying to let the tests drive the need for functionality instead of us thinking we know what is needed and then writing tests that verify that thinking. It is a difference that this test demonstrates very clearly.</p>
+</div>
+</div>
+<div class="section" id="test-6">
+<h3>2.2.7. Test 6<a class="headerlink" href="#test-6" title="Link zu dieser Überschrift">¶</a></h3>
+<p><strong>Pop a Stack that has no elements.</strong></p>
+<p>Was soll geschehen, wenn wir die Pop-Methode auf einen Stack anwenden, der kein Element besitzt. Es gibt mehrere Optionen:</p>
+<ul class="simple">
+<li>Wir können null zurückgegeben (obwohl wir niemals einen null-Wert auf dem Stack legen könnten)</li>
+<li>Wir könnten einen in/out-Parameter benutzen, der den Erfolg oder Misserfolg der Operation anzeigt. Diese Methode ist umständlich, weil der Nutzer den Wert prüfen muss, um den Erfolg/Misserfolg zu bestimmen.</li>
+<li>Wir könnten eine Exception werden, weil dies ein unerwarteter Fehler darstellt, der nicht auftreten sollte.</li>
+</ul>
+<p>Es macht wohl am meisten Sinn, eine Exception zu werfen. Wir schreiben einen Test, der das Werfen einer Exception von der Pop-Methode erwartet:</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="c1">//Test 6</span>
+<span class="na">[Test]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">PopEmptyStack</span><span class="p">()</span>
+<span class="p">{</span>
+
+    <span class="n">Assert</span><span class="p">.</span><span class="n">Throws</span><span class="p">&lt;</span><span class="n">InvalidOperationException</span><span class="p">&gt;(()</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">Pop</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Wir müssen die Pop-Methode ändern, um zu prüfen, ob es überhaupt schon Elemente in der ArrayList gibt und gegebenenfalls eine InvalidOperationException werfen.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span>   <span class="k">public</span> <span class="kt">object</span> <span class="nf">Pop</span><span class="p">()</span>
+   <span class="p">{</span>
+       <span class="k">if</span><span class="p">(</span><span class="n">IsEmpty</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="k">throw</span> <span class="k">new</span> <span class="nf">InvalidOperationException</span><span class="p">(</span><span class="s">&quot;Cannot pop an empty stack&quot;</span><span class="p">);</span>
+       <span class="p">}</span>
+
+       <span class="kt">object</span> <span class="n">top</span> <span class="p">=</span> <span class="n">elements</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+       <span class="n">elements</span><span class="p">.</span><span class="n">RemoveAt</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+       <span class="k">return</span> <span class="n">top</span><span class="p">;</span>
+   <span class="p">}</span>
+
+
+<span class="n">Der</span> <span class="n">Test</span> <span class="n">funktioniert</span><span class="p">,</span> <span class="n">lässt</span> <span class="n">uns</span> <span class="n">aber</span> <span class="n">gleichzeitig</span> <span class="n">an</span> <span class="n">neu</span> <span class="n">zu</span> <span class="n">implementierende</span> <span class="n">Tests</span> <span class="n">denken</span><span class="p">,</span> <span class="n">die</span> <span class="n">die</span> <span class="n">Behandlung</span> <span class="n">von</span> <span class="k">null</span><span class="p">-</span><span class="n">Werten</span> <span class="n">zum</span> <span class="n">Thema</span> <span class="n">haben</span><span class="p">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Push null onto the Stack and verify that IsEmpty returns false.</li>
+<li>Push null onto the Stack, Pop the Stack, and verify that the value returned is null.</li>
+<li>Push null onto the Stack, call Top, and verify that the value returned is null.</li>
+</ul>
+</div>
+<div class="section" id="test-7">
+<h3>2.2.8. Test 7<a class="headerlink" href="#test-7" title="Link zu dieser Überschrift">¶</a></h3>
+<p><strong>Push a single object and then call Top. Verify that IsEmpty returns false.</strong></p>
+<p>Die Top-Methode ändert nicht den Zustand des Stacks, sie gibt lediglich das oberste Element zurück. Der Test stellt sicher, dass IsEmpty nicht vom Top-Aufruf berührt wird.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="na">[Test]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">PushTop</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="n">stack</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+<span class="n">stack</span><span class="p">.</span><span class="n">Top</span><span class="p">();</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">IsFalse</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="n">IsEmpty</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Der Test kann nicht funktionieren, weil es noch keine Top-Methode gibt. Eine erste, gefakte Top-Methode könnte so aussehen:</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">object</span> <span class="nf">Top</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Beim Implementieren der Methode fallen uns weitere Test-Fälle ein:</p>
+<ul class="simple">
+<li>Füge mehrere Objekte dem Stack hinzu und stelle sicher, dass die Top-Methode immer das richtige Objekt zurückliefert.</li>
+<li>Füge eine Objekt dem Stack hinzu, rufe Top wiederholt auf und stelle sicher, dass immer dasselbe Objekt zurückgeliefert wird, das auch auf den Stack gelegt wurde.</li>
+</ul>
+</div>
+<div class="section" id="test-8">
+<h3>2.2.9. Test 8<a class="headerlink" href="#test-8" title="Link zu dieser Überschrift">¶</a></h3>
+<p><strong>Push a single object, remembering what it is; and then call Top. Verify that the object that is returned is equal to the one that was pushed.</strong></p>
+<p>Während der letzte Test die Korrektheit der IsEmpty-Methode prüfte, wird nun geprüft, ob wir das gleiche Objekt zurückerhalten, was als letztes auf den Stack gelegt wurde.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="na">[Test]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">PushTopContentCheckOneElement</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="kt">string</span> <span class="n">pushed</span> <span class="p">=</span> <span class="s">&quot;42&quot;</span><span class="p">;</span>
+<span class="n">stack</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="n">pushed</span><span class="p">);</span>
+<span class="kt">string</span> <span class="n">topped</span> <span class="p">=</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">stack</span><span class="p">.</span><span class="n">Top</span><span class="p">();</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="n">pushed</span><span class="p">,</span> <span class="n">topped</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Beim Ausführen erzeugt NUnit folgende Fehlermeldung:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>Tests run: <span class="m">8</span>, Failures: <span class="m">1</span>, Not run: <span class="m">0</span>, Time: <span class="m">0</span>.0312442 seconds
+Failures:
+<span class="m">1</span><span class="o">)</span> StackFixture.PushTopContentCheckOneElement : expected:&lt;<span class="s2">&quot;42&quot;</span>&gt;
+but was:&lt;<span class="o">(</span>null<span class="o">)</span>&gt;
+at StackFixture.PushTopContentCheckOneElement<span class="o">()</span>
+in c:<span class="se">\s</span>tackfixture.cs:line <span class="m">84</span>
+</pre></div>
+</div>
+<p>Die gefakte Implementierung der Top-Methode muss wohl verbessert werden.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">object</span> <span class="nf">Top</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">elements</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-9">
+<h3>2.2.10. Test 9<a class="headerlink" href="#test-9" title="Link zu dieser Überschrift">¶</a></h3>
+<p><strong>Push multiple objects, remembering what they are; call Top, and verify that the last item pushed is equal to the one returned by Top.</strong></p>
+<p>Wir müssen mehr als ein Element auf den Stack legen. Der Return-Wert von Top sollte gleich dem Wert sein, der als letztes eingefügt wurde.</p>
+<div class="highlight-Java"><div class="highlight"><pre><span></span><span class="o">[</span><span class="n">Test</span><span class="o">]</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">PushTopContentCheckMultiples</span><span class="o">()</span>
+<span class="o">{</span>
+    <span class="n">string</span> <span class="n">pushed3</span> <span class="o">=</span> <span class="s">&quot;3&quot;</span><span class="o">;</span>
+    <span class="n">stack</span><span class="o">.</span><span class="na">Push</span><span class="o">(</span><span class="n">pushed3</span><span class="o">);</span>
+    <span class="n">string</span> <span class="n">pushed4</span> <span class="o">=</span> <span class="s">&quot;4&quot;</span><span class="o">;</span>
+    <span class="n">stack</span><span class="o">.</span><span class="na">Push</span><span class="o">(</span><span class="n">pushed4</span><span class="o">);</span>
+    <span class="n">string</span> <span class="n">pushed5</span> <span class="o">=</span> <span class="s">&quot;5&quot;</span><span class="o">;</span>
+    <span class="n">stack</span><span class="o">.</span><span class="na">Push</span><span class="o">(</span><span class="n">pushed5</span><span class="o">);</span>
+    <span class="n">string</span> <span class="n">topped</span> <span class="o">=</span> <span class="o">(</span><span class="n">string</span><span class="o">)</span><span class="n">stack</span><span class="o">.</span><span class="na">Top</span><span class="o">();</span>
+    <span class="n">Assert</span><span class="o">.</span><span class="na">AreEqual</span><span class="o">(</span><span class="n">pushed5</span><span class="o">,</span> <span class="n">topped</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Der Test scheint zu funktionieren.</p>
+</div>
+<div class="section" id="test-10">
+<h3>2.2.11. Test 10<a class="headerlink" href="#test-10" title="Link zu dieser Überschrift">¶</a></h3>
+<p><strong>Push one object and call Top repeatedly, comparing what is returned to what was pushed.</strong></p>
+<p>Die Top-Methode sollte nicht den Zustand des Objektes Ã¤ndern, somit können wir ein Objekt auf den Stack legen und Top häufiger aufrufen; es sollte immer das gleiche Objekt zurückliefern.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="na">[Test]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">PushTopNoStackStateChange</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">string</span> <span class="n">pushed</span> <span class="p">=</span> <span class="s">&quot;44&quot;</span><span class="p">;</span>
+    <span class="n">stack</span><span class="p">.</span><span class="n">Push</span><span class="p">(</span><span class="n">pushed</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">index</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">;</span> <span class="n">index</span><span class="p">++)</span>
+    <span class="p">{</span>
+        <span class="kt">string</span> <span class="n">topped</span> <span class="p">=</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">stack</span><span class="p">.</span><span class="n">Top</span><span class="p">();</span>
+        <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="n">pushed</span><span class="p">,</span> <span class="n">topped</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Auch das funktioniert wie erwartet.</p>
+</div>
+<div class="section" id="test-11">
+<h3>2.2.12. Test 11<a class="headerlink" href="#test-11" title="Link zu dieser Überschrift">¶</a></h3>
+<p><strong>Call Top on a Stack that has no elements.</strong></p>
+<p>Konsistentes Verhalten ist der Schlüssel beim Design einer Klassenbibliothek. Wir haben bereits oben eine InvalidOperationException geworfen; deshalb sollten wir es wieder tun.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="na">[Test]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">TopEmptyStack</span><span class="p">()</span>
+<span class="p">{</span>
+
+    <span class="n">Assert</span><span class="p">.</span><span class="n">Throws</span><span class="p">&lt;</span><span class="n">InvalidOperationException</span><span class="p">&gt;(()</span> <span class="p">=&gt;</span> <span class="n">stack</span><span class="p">.</span><span class="n">Top</span><span class="p">());</span>
+
+    <span class="c1">//stack.Top();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Das kann natürlich nicht funktionieren.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>Tests run: <span class="m">11</span>, Failures: <span class="m">1</span>, Not run: <span class="m">0</span>, Time: <span class="m">0</span>.031263 seconds
+Failures:
+<span class="m">1</span><span class="o">)</span> StackFixture.TopEmptyStack : Expected: InvalidOperationException but was
+ArgumentOutOfRangeException
+at System.Collections.ArrayList.get_Item<span class="o">(</span>Int32 index<span class="o">)</span>
+at Stack.Top<span class="o">()</span> in c:<span class="se">\p</span>rojects<span class="se">\b</span>ook<span class="se">\s</span>tack<span class="se">\s</span>tack.cs:line <span class="m">33</span>
+at StackFixture.TopEmptyStack<span class="o">()</span> in c:<span class="se">\s</span>tackfixture.cs:line <span class="m">119</span>
+</pre></div>
+</div>
+<p>Wir sollten etwas lernen: Das gleiche Fehlverhalten wie zunächst in der Pop-Methode.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">object</span> <span class="nf">Top</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">IsEmpty</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span>
+        <span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&quot;cannot top an empty stack&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">elements</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Dies funktioniert. Die Ähnlichkeit der Top- und Pop-Methode ist jedoch so offensichtlich, dass ein Refactoring angebracht ist. Beide prüfen, ob Elemente in der Liste sind und werfen eventuell eine Ausnahme. Die beste Lösung wäre damit wenn Pop die Top-Methode aufruft.</p>
+<div class="highlight-csharp"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">object</span> <span class="nf">Pop</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">object</span> <span class="n">top</span> <span class="p">=</span> <span class="n">Top</span><span class="p">();</span>
+    <span class="n">elements</span><span class="p">.</span><span class="n">RemoveAt</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">top</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="kt">object</span> <span class="nf">Top</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">IsEmpty</span><span class="p">)</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">InvalidOperationException</span><span class="p">(</span><span class="s">&quot;Stack is Empty&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">elements</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Dies funktioniert; Code Duplication wurde vermieden.</p>
+</div>
+<div class="section" id="zusammenfassung">
+<h3>2.2.13. Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Link zu dieser Überschrift">¶</a></h3>
+<p>Der oben genannte Link zum Wikipedia-Artikel analysiert die Vor- und Nachteile des TDD recht ausführlich und gibt viele weitere Links zum Thema. Nach dem durcharbeiten dieser Übung sollten Sie zumindest die grundlegende Arbeitsweise mit einem Unittesting-Framework verstanden haben.</p>
+</div>
+</div>
+<div class="section" id="coverage-black-und-white">
+<h2>2.3. Coverage(Black- und White)<a class="headerlink" href="#coverage-black-und-white" title="Link zu dieser Überschrift">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Arbeitsblatt</p>
+<p><a class="reference download internal" href="_downloads/White_Box_Arbeitsblatt.pdf" download=""><code class="xref download docutils literal"><span class="pre">Schueler</span></code></a></p>
+<div class="last highlight-csharp"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="p">&gt;=</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">result</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">=</span><span class="m">2</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;=</span> <span class="n">x</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="p">{</span>
+            <span class="n">result</span> <span class="p">=</span> <span class="n">result</span> <span class="p">*</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<a class="reference internal image-reference" href="_images/Kontroll_Fluss.jpg"><img alt="_images/Kontroll_Fluss.jpg" src="_images/Kontroll_Fluss.jpg" style="width: 8cm;" /></a>
+<p>Unter Code-Coverage (Testabdeckung) wird verstanden, wie hoch der Anteil des abgedeckten Quellcodes durch die Tests tatsächlich ist.
+Es setzt dafür das Vorhandensein des Quellcodes voraus; dennoch können natürlich die Tests des Black-Box-Verfahrens dafür verwendet werden.
+Die <a class="reference external" href="https://de.wikipedia.org/wiki/Testabdeckung">Testabdeckung</a> spielt als Metrik zur Qualitätssicherung und zur Steigerung der Qualität insbesondere in der Softwaretechnik eine große Rolle.</p>
+<p>Die Abdeckung des Quellcodes wird in verschiedenen Graden gemessen.</p>
+<div class="section" id="anweisungsuberdeckung-c0-masz">
+<h3>2.3.1. Anweisungsüberdeckung C0 - Maß<a class="headerlink" href="#anweisungsuberdeckung-c0-masz" title="Link zu dieser Überschrift">¶</a></h3>
+<p>Jede Zeile des Quellcodes muss mindestens einmal durchlaufen worden sein. Dies ist der heutige Standard bei Tests.</p>
+<p><strong>Anweisungsüberdeckung = Anzahl ausgeführte Anweisungen / Gesamtzahl der Anweisungen</strong></p>
+<p>Im obigen Beispiel würde diese Bedingung mit einem Testfall erfüllbar sein: T1(x = 2)</p>
+</div>
+<div class="section" id="zweiguberdeckung-c1-masz">
+<h3>2.3.2. Zweigüberdeckung C1 - Maß<a class="headerlink" href="#zweiguberdeckung-c1-masz" title="Link zu dieser Überschrift">¶</a></h3>
+<p>Die Zweigüberdeckung (engl. branch coverage) zur Ermittlung der Testfälle konzentriert sich auf die einzelnen Zweige des Testobjekts. Zweige stellen hier die Wegabschnitte des Kontrollflusses durch den Code des Testobjekts dar. Je nach festgelegtem Ziel sind ein gewisser Anteil oder alle Zweige im Code des Testobjekts zu durchlaufen. Um die dazu notwendigen Testfälle zu identifizieren, orientiert man sich üblicherweise am Kontrollflussgraphen des Testobjekts.</p>
+<p>Im obigen Beispiel muss zusätzlich zu T1 (x = 2) noch der else-teil durchlaufen werden. Dies kann beispielsweise mit T2 (x = -1= erreicht werden.</p>
+<p>In heutigen Testszenarien wird ebenaso eine 100 % ige Testabdeckung verlangt.</p>
+<p><strong>Zweigüberdeckung = Anzahl ausgeführte Zweige / Gesamtzahl der Zweige</strong></p>
+</div>
+<div class="section" id="pfadabdeckung-c2-masz">
+<h3>2.3.3. Pfadabdeckung C2 - Maß<a class="headerlink" href="#pfadabdeckung-c2-masz" title="Link zu dieser Überschrift">¶</a></h3>
+<p>Die Pfadüberdeckung (engl. path coverage) zur Ermittlung der Testfälle konzentriert sich auf die einzelnen Pfade des Testobjekts. Pfade stellen hier die möglichen <em>Gesamtwege</em> des Kontrollflusses durch den Code des Testobjekts dar. Je nach festgelegtem Ziel sind ein gewisser Anteil oder alle Pfade im Code des Testobjekts zu durchlaufen. Da reale Programme aber oft eine sehr große Anzahl von möglichen Pfaden aufweisen, ist ein Durchlaufen sämtlicher Pfade während des Tests u.U. nicht möglich, zum Beispiel bei Schleifen. Um die bei der Pfadabdeckung notwendigen Testfälle zu identifizieren, orientiert man sich auch hier sinnvollerweise am Kontrollflussgraphen des Testobjekts.</p>
+<p>Das C2-Abdeckungsmaß schreibt dazu vor, dass Testfälle generiert werden müssen, die</p>
+<ul class="simple">
+<li>enthaltene Schleifen nicht durchlaufen</li>
+<li>enthaltene Schleifen nicht oft durchlaufen</li>
+<li>enthaltene Schleifen oft durchlaufen</li>
+</ul>
+<p>wobei alle drei Bedingungen durch die Menge der Testfälle abgedeckt werden müssen. Für die Methode factorial entspricht das den folgenden Testfällen:</p>
+<ul class="simple">
+<li>Testfall #1
+x = -1
+a, c, k</li>
+<li>Testfall #2
+x = 0
+a, b, d, h, i, k</li>
+<li>Testfall #3
+x = 2
+a, b, d, e, f, i, k</li>
+<li>Testfall #4
+x = 7
+a, b, d, [e, f, g]5038, e, f, i, k</li>
+</ul>
+<p>Der Wert für häufige Schleifendurchläufe wurde hier auf 5039 festgelegt, um die Ausführungsdauer von Testfall #4 zu begrenzen. Die Entscheidung, wie oft eine Schleife im Test durchlaufen werden sollte, hängt jedoch stark vom Testobjekt, der zu Verfügung stehenden Hardware, und dem zu erwartenden Kosten-Nutzen-Verhältnis ab.</p>
+<p>Wird der White-Box-Test zusammen mit entsprechenden Visualisierungstools eingesetzt (z.B. NCover, DotCover), so kann man einen recht guten Überblick über den Testabdeckungsgrad erhalten.</p>
+<a class="reference internal image-reference" href="_images/white_box_coverage_easter2.png"><img alt="_images/white_box_coverage_easter2.png" src="_images/white_box_coverage_easter2.png" style="width: 500px;" /></a>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Stichwortverzeichnis"
+             >Index</a></li>
+        <li class="right" >
+          <a href="swmetriken.html" title="3. Metriken"
+             >weiter</a> |</li>
+        <li class="right" >
+          <a href="vorgehensmodelle.html" title="1. Vorgehensmodelle"
+             >zurück</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">SWE</a> &#187;</li> 
+      </ul>
+    </div>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+  </body>
+</html>

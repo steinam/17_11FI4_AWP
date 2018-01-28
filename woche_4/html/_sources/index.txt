@@ -1,0 +1,31 @@
+.. Softwareentwicklung documentation master file, created by
+   sphinx-quickstart on Sun May 03 21:41:34 2015.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+====================   
+Softwareentwicklung!
+====================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   versionsverwaltung.rst
+   vorgehensmodelle.rst
+   testverfahren.rst
+   swmetriken.rst
+   build_tools.rst
+   ci.rst
+   
+   
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
