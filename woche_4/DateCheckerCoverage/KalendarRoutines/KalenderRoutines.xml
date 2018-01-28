@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KalendarRoutines</name>
+    </assembly>
+    <members>
+        <member name="T:KalendarRoutines.Calendar">
+            <summary>
+            Allgemeine Hilfsroutinen für Kalenderberechnungen
+            </summary>
+        </member>
+        <member name="M:KalendarRoutines.Calendar.d_year(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gibt den Tag des Jahres zurück
+            </summary>
+            <param name="day">Tag</param>
+            <param name="month">Monat</param>
+            <param name="year">Jahr</param>
+            <returns>Tag des Jahres</returns>
+        </member>
+        <member name="M:KalendarRoutines.Calendar.easter(System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+            Gibt dem Monat und den Tag des Ostersonntags zurück
+            </summary>
+            <param name="year">Gesuchtes Jahr</param>
+            <param name="eastermonth">Monat des Ostersonntags</param>
+            <param name="easterday">Tag des Ostersonntags</param>
+        </member>
+        <member name="M:KalendarRoutines.Calendar.easter2(System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+            Berechnung des Tags und Monats des Ostersonntags
+            Die Methode prüft im Gegensatz zu easter() erst die Jahre nach 1582 ab
+            was wohl heute häufiger gebraucht wird.
+            </summary>
+            <param name="year">Jahr</param>
+            <param name="eastermonth">Nummer des Monats, auf den der Ostersonntag fällt</param>
+            <param name="easterday">Tag des Monats, auf den der Ostersonntag fällt</param>
+        </member>
+        <member name="M:KalendarRoutines.Calendar.DM(System.Int32,System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+            gibt für einen Jahrestag und das Jahr den 
+            entsprechenden Monat und Tag zurück
+            </summary>
+            <param name="jt">Jahrestag</param>
+            <param name="year">Jahr</param>
+            <param name="day">Tag</param>
+            <param name="month">Monat</param>
+        </member>
+        <member name="M:KalendarRoutines.Calendar.Julian(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Kalkuliert das Julianische Datum für ein übergebenes Datum
+            Damit ist nicht der Julianische Kalender nach Julius Cäsar gemeint,
+            sondern der Kalender nach Joseph Scaliger
+            </summary>
+            <param name="day">Tag als int</param>
+            <param name="month">Monat als int</param>
+            <param name="year">Jahr als int</param>
+            <returns>Julianstag</returns>
+        </member>
+        <member name="M:KalendarRoutines.Calendar.d_week(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            gibt für ein übergebenes Datum den Wochentag als Zahl zurück
+            Sonntag = 0, Montag = 1
+            </summary>
+            <param name="day"></param>
+            <param name="month"></param>
+            <param name="year"></param>
+            <returns>Wochentag als Zahl</returns>
+        </member>
+        <member name="M:KalendarRoutines.Calendar.diff_day(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Kalkuliert das Alter in Tagen zwischen 2 Daten mit Hilfe der 
+            Funktion<see cref="M:KalendarRoutines.Calendar.Julian(System.Int32,System.Int32,System.Int32)"/>
+            Dabei wird aus den ersten drei Elemente (j1) und aus den folgenden
+            3 Elementen (j2) jeweils der Julianstag gebildet.
+            Die Differenz berechnet sich dann aus j2 - j1;
+            </summary>
+            <param name="day_1">Tag 1</param>
+            <param name="month_1">Monat 1</param>
+            <param name="year_1">Jahr 1</param>
+            <param name="day_2">Tag 2</param>
+            <param name="month_2">Monat 2</param>
+            <param name="year_2">Jahr 2</param>
+            <returns>Alter in Tagen</returns>
+        </member>
+        <member name="M:KalendarRoutines.Calendar.week_day(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gibt den Wochentag für ein beliebiges Datum in numerischer 
+            Schreibweise zurück
+            
+            Sonntag ist 0, Montag=1, ..., Samtag = 6
+            </summary>
+            <param name="t">Tag</param>
+            <param name="m">Monat</param>
+            <param name="j">Jahr</param>
+            <returns></returns>
+        </member>
+        <member name="T:KalendarRoutines.Fac">
+            <summary>
+            Zusammenfassung für Fac.
+            </summary>
+        </member>
+        <member name="M:KalendarRoutines.Fac.factorial(System.Int32)">
+            <summary>
+            Errechnet die Fakultät einer Zahl
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
